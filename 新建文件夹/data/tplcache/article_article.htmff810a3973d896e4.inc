@@ -1,0 +1,45 @@
+<?php
+$z[0]=Array("field","",66,85);
+$z[0][4]['name']="title";
+$z[1]=Array("global","",86,112);
+$z[1][4]['name']="cfg_webname";
+$z[2]=Array("field","",153,175);
+$z[2][4]['name']="keywords";
+$z[3]=Array("field","",215,266);
+$z[3][4]['name']="description";
+$z[3][4]['function']="html2text(@me)";
+$z[4]=Array("include","",703,738);
+$z[4][4]['filename']="head.htm";
+$z[5]=Array("field","",879,937);
+$z[5][4]['name']="typeid";
+$z[5][4]['function']="GetTopTypename(@me)";
+$z[6]=Array("channel","\r\n        <dl class=\"list-none navnow\">\r\n          <dt id='part2_6'><a href='[field:typeurl/]'  title='[field:typename/]'><span>[field:typename/]</span></a></dt>\r\n        </dl>\r\n        ",1040,1450);
+$z[6][4]['type']="son";
+$z[6][4]['currentstyle']="<dl class='list-none navnow'> <dt id='part2_6' class='on'><a href='~typelink~' class='zm'><span>~typename~</span></a></dt> </dl>";
+$z[7]=Array("field","",2283,2312);
+$z[7][4]['name']="position";
+$z[8]=Array("field","",2334,2359);
+$z[8][4]['name']="name";
+$z[9]=Array("field","",2481,2500);
+$z[9][4]['name']="title";
+$z[10]=Array("field","",2549,2567);
+$z[10][4]['name']="body";
+$z[11]=Array("field","",2767,2787);
+$z[11][4]['name']="writer";
+$z[12]=Array("field","",2843,2870);
+$z[12][4]['name']="phpurl";
+$z[13]=Array("field","",2894,2917);
+$z[13][4]['name']="id";
+$z[14]=Array("field","",2922,2946);
+$z[14][4]['name']="mid";
+$z[15]=Array("field","",3036,3092);
+$z[15][4]['name']="pubdate";
+$z[15][4]['function']="MyDate('Y-m-d H:i',@me)";
+$z[16]=Array("prenext","",3260,3285);
+$z[16][4]['get']="pre";
+$z[17]=Array("prenext","",3297,3323);
+$z[17][4]['get']="next";
+$z[18]=Array("include","",3390,3427);
+$z[18][4]['filename']="footer.htm";
+
+?>

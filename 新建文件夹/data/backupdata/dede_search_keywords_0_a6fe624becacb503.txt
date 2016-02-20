@@ -1,0 +1,1 @@
+INSERT INTO `dede_search_keywords` VALUES('1','“温水煮蛙”','“温水煮蛙” 温水煮蛙','1','1','1443419150','0','0');

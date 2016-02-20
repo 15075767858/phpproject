@@ -1,0 +1,1 @@
+<li><span class='search_title'><a href='[field:arcurl/]' target='_blank'><em style="font-style:normal;">[field:title/]</a></span><span class='search_content'> [field:description/]...</span><span class='search_updatetime'>[field:pubdate function="MyDate('Y-m-d',@me)"/]</span></li>

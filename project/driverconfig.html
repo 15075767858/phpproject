@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- TemplateParam name="class" type="URL" value="file:///F|/EM9460www/div-b" -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <title>BACnet Router&Control</title>
+    <style type="text/css">
+    
+    .main {
+        margin-left: 50px;
+        width: 753px;
+        margin-top: 50px;
+    }
+    .configcontent {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-box;
+        display: -webkit-box;
+        display: box;
+        -webkit-box-orient: vertical;
+    }
+    
+    .row3 {
+        border-bottom: 1px solid #eee;
+        height: 150px;
+        padding-top: 13px;
+    }
+    .row3:nth-child(3) {
+        
+        height: 130px;
+    }
+    .row3>ul {
+    display: block;
+    }
+    .row3>* {
+        width: 30%;
+        float: left;
+    }
+    .row3>div:nth-child(1)>span{
+    	font-size: 18px;
+    }
+
+    .row3:nth-child(1)>input{
+    	margin-top:63px;
+    }
+	.row3:nth-child(3)>input{
+    	margin-top:40px;
+    }
+    .row2{
+    	margin-top:22px;
+    }
+    .row2>div{
+    	border:0px solid red;
+    }
+	.row2>.d1{display: block;
+		float:left;
+		width: 29%;
+	}
+	.row2>.d2{
+display: block;
+		float:left;
+		width: 29%;
+	}
+ 	.row2>.d3{
+ 		width: 42%;
+ 		float: left;
+ 	}
+ 	.row2>.d3 select{
+ 		width: 200px;
+ 	}
+    </style>
+</head>
+
+<body>
+    
+    <img clss="titleimg" src="title.png" width="960" height="200" />
+    <div class="main">
+        <div class="panel panel-primary">
+            <!-- Default panel contents -->
+            <div class="panel-heading">driver config</div>
+            <div class="panel-body configcontent">
+                <div class="row3">
+                    <div>
+                        <input type="radio" name="BACnet">
+                        <span>BACnet IP</span>
+                    </div>
+                    <ul>
+                        <li>
+                            <input type="checkbox">
+                            <span>MS/TP Client</span></li>
+                        <li>
+                            <input type="checkbox">
+                            <span>Progarm Enable</span></li>
+                        <li>
+                            <input type="checkbox">
+                            <span>Global Enable</span></li>
+                        <li>
+                            <input type="checkbox">
+                            <span>Modbus Enable</span></li>
+                    </ul>
+                    <input class='btn btn-info'  type="button" value="Modbus Config">
+                   
+                </div>
+                 <div style="clear:both;"></div>
+                <div class="row3">
+                    <div>
+                        <input type="radio" name="BACnet">
+                        <span>BACnet Router</span>
+                    </div>
+                    <ul>
+                        <li>
+                            <input type="checkbox">
+                            <span>BACnet Router</span></li>
+                        <li>
+                            <input type="checkbox">
+                            <span>Progarm Enable</span></li>
+                        <li>
+                            <input type="checkbox">
+                            <span>Global Enable</span></li>
+                    </ul>
+                    <input class='btn btn-info' type="button" value="Global Point Config">
+                    <div style="clear:both;"></div>
+                </div>
+                 <div style="clear:both;"></div>
+                <div class="row2">
+                	<div class="d1">
+                    <input type="radio" name="AD">
+                    <span>Add</span>
+                    </div>
+
+                    <div class="d2">
+                    <input type="radio" name="AD">
+                    <span>Delete</span>
+                    </div>
+                    <div class="d3">
+                    <select >
+                   		<option>   </option>
+                        <option>MS/TP Client</option>
+                        <option>Progarm Enable</option>
+                        <option>Global Enable</option>
+                        <option>Modbus Enable</option>
+                        <option>BACnet Router</option>
+                        <option>Progarm Enable</option>
+                        <option>Global Enable</option>
+                    </select>
+                    <input class=" btn-success" type="button" value="  Ok  ">
+                    <input class=" btn-danger" type="button" value=" cancle ">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jselectivizr.js"></script>
+<script type="text/javascript">
+</script>
+
+</html>

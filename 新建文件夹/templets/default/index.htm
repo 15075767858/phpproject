@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--
+                       (0 0)
+   +-------------oOO----(_)----------------+
+   |           Powered By 狂流开发         |
+   |              qq:1078900559            |
+   |        E-mail:1078900559@qq.com       |
+   +--------------------------oOO----------+
+                      |__|__|
+                       || ||
+                      ooO Ooo
+-->
+<meta charset="utf-8" />
+<title>{dede:global.cfg_webname/}</title>
+<meta name="description" content="{dede:global.cfg_description/}" />
+<meta name="keywords" content="{dede:global.cfg_keywords/}" />
+<link rel="stylesheet" type="text/css" href="/skin/css/metinfo_ui.css" id="metuimodule" data-module ="10001" />
+<link rel="stylesheet" type="text/css" href="/skin/css/metinfo.css" />
+<script src="/skin/js/jquery1.7.2.js" type="text/javascript"></script>
+<script src="/skin/js/metinfo_ui.js" type="text/javascript"></script>
+<!--[if IE]>
+<script src="/skin/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+</head>
+
+<herder>
+  <div class="HER--top">
+    <div class="HER--top-nav center width">
+      <div class="SEO">
+        <p> 欢迎致电鑫港仪器仪表：0317-5893507</p>
+      </div>
+      <div class="lang"><span></span><a href='#' onclick='SetHome(this,window.location,"非IE浏览器不支持此功能，请手动设置！");' style='cursor:pointer;' title='设为首页'  >设为首页</a><span></span><a href='#' onclick='addFavorite("非IE浏览器不支持此功能，请手动设置！");' style='cursor:pointer;' title='收藏本站'  >收藏本站</a></div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="HER--cen position">
+    <div class="HER--cen-con width center position">
+      <div class="logo fl"> <a href="/" title="{dede:global.cfg_webname/}" id="web_logo" target='_self'> <img src="/skin/images/logo.png" alt="{dede:global.cfg_webname/}" title="{dede:global.cfg_webname/}" style="margin:20px 0px 0px 0px;" /> </a> </div>
+      <div class="HER--search">
+        <form  name="formsearch" action="{dede:global.cfg_cmsurl/}/plus/search.php">
+          <input type="hidden" name="kwtype" value="0" />
+          <span class='navsearch_input'>
+          <input type="text" name="q" size='20'/>
+          </span> 
+          <input type='submit' name='submit' value='搜索' class="searchgo" />
+        </form>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="HER--bot">
+    <nav class="width center">
+      <ul class="list-none">
+        <li id="nav_10001" style='width:134px;' class='navdown'><a href='/' title='{dede:global.cfg_webname/}' class='nav'><span>首页</span></a></li>
+       
+        {dede:channelartlist typeid='top'}
+ <li class="nav-line"></li>
+        <li id='nav_[field:global name=autoindex runphp="yes"]@me=@me+1;[/field:global]' style='width:134px;' ><a href='{dede:field name='typeurl'/}' 0 title='{dede:field name='typename'/}' class='hover-none nav'><span>{dede:field name='typename'/}</span></a>
+          <dl>
+            {dede:channel type='son' row='8' currentstyle="
+            <dd><a href='~typelink~' ~rel~><span>~typename~</span></a></dd>
+            "}
+            <dd><a href='[field:typeurl/]' title='[field:typename/]' >[field:typename/]</a></dd>
+            {/dede:channel}
+          </dl>
+        </li>
+        {/dede:channelartlist}
+        <li class="nav-line"></li>
+        {dede:type typeid='5'}
+        <li id='nav_10' style='width:133px;' ><a href='[field:typelink/]'  title='[field:typename/]' class='hover-none nav'><span>[field:typename/]</span></a></li>
+        {/dede:type}
+      </ul>
+    </nav>
+  </div>
+  <div class="HER--ban center position">
+    <div class="HER-ban-TOP"></div>
+    <div class="HER-banner center">
+      <link rel='stylesheet' href='/skin/css/flexslider.css' type='text/css'>
+      <script src='/skin/js/jquery.flexslider-min.js'></script>
+      <div class='flash'>
+        <div class='flexslider flexslider_flash flashfld'>
+          <ul class='slides list-none'>
+ <li><a> <img src='/skin/images/sylb02.jpg' alt='' width='990' height='360'></a></li>
+
+            <li><a> <img src='/skin/images/sylb03.jpg' alt='' width='990' height='360'></a></li>
+            <li><a> <img src='/skin/images/sylb01.jpg' alt='' width='990' height='360'></a></li>
+                     </ul>
+        </div>
+      </div>
+      <script type='text/javascript'>$(document).ready(function(){ $('.flashfld').flexslider({ animation: 'slide',controlNav:false});});</script></div>
+  </div>
+  <div class="HER-ban-BOT center"></div>
+</herder>
+<div class="CON--top width center">
+  <div class="CON--top-l fl" >
+    <h3 class="CON--title position"> <span class="tubiao1"></span>关于鑫港仪器仪表 <a href="/a/guanyuzhiwuyou/" class="CON--title-more" title="关于鑫港仪器仪表"  target='_self'>更多>></a> </h3>
+    <div class="editor clear CON--top-pd"><img alt="" src="/uploads/allimg/150928/1-15092Q24500352.jpg" style="width: 100px; height: 100px; margin: 5px 9px; float: left;" />       {dede:sql sql='Select content from dede_arctype where id=1'} 
+      [field:content  function='cn_substr(html2text(@me),790)'/]...
+      {/dede:sql}
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="CON--top-r fr" >
+    <h3 class="CON--title position"> <span class="tubiao2"></span>鑫港仪器仪表新闻 <a href="/a/zhiwuyouxinwen/" class="CON--title-more" title="鑫港仪器仪表新闻"  target='_self'>更多>></a> </h3>
+    <div class="CON--top-rnr CON--top-pd" >
+      <ul class="list-none">
+        {dede:arclist flag='c' typeid='11' infolen='100'}
+        <li class="CON--top-rs" style="width:310px;">
+          <dt class="fl" style="width:120px;"> <a href="[field:arcurl/]" title="[field:title/]"> <img src="[field:picname/]" alt="[field:title/]" title="[field:title/]" width="120" height="80"/></a> </dt>
+          <dd class="fr" style="width:175px;">
+            <h2 style="width:175px;"><a href="[field:arcurl/]" title="[field:title/]">[field:title/]</a></h2>
+            <p style="height:45px;">[field:info/]...</p>
+          </dd>
+          <div class="clear"></div>
+        </li>
+        {/dede:arclist}
+        
+        {dede:arclist row=2 typeid='11'  titlelen='60'}
+        <li class="CON--top-rx"><a href="[field:arcurl/]" title="[field:title/]">[field:title/]</a></li>
+        {/dede:arclist}
+      </ul>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<div class="clear"></div>
+<div class="CON--bot width center position">
+  <div class="CON--bot-top"></div>
+  <h3 class="CON--title position">
+    <div class="fl"><span class="tubiao3"></span>鑫港仪器仪表产品</div>
+    <a href="/a/zhiwuyouchanpin/" class="CON--title-more" title="鑫港仪器仪表产品"  target='_self'>更多>></a> </h3>
+  <div class="flip">
+    <p id="trigger"></p>
+    <a class="prev" id="car_prev" href="javascript:void(0);"></a> <a class="next" id="car_next" href="javascript:void(0);"></a> </div>
+  <div class="CON--cen-pd3 position clear">
+    <div class="profld position" id="indexcar" data-listnum="4">
+      <ol class='list-none metlist'>
+        {dede:arclist row=8 typeid='36'}
+        <li class='list'><a href='[field:arcurl/]' title='[field:title/]' target='_self' class='img'><img src='[field:picname/]' alt='[field:title/]' title='[field:title/]' width='203' height='150' /></a>
+          <h3 style='width:203px;'><a href='[field:arcurl/]' title='[field:title/]' target='_self'>[field:title/]</a></h3>
+        </li>
+        {/dede:arclist}
+      </ol>
+    </div>
+  </div>
+  <div class="CON--bot-pot"></div>
+</div>
+<div class="clear"></div>
+{dede:include filename="footer.htm"/}
+</body></html>

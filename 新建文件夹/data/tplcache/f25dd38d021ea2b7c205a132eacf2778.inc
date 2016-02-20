@@ -1,0 +1,1 @@
+<span class='spic'><a href='javascript:;' onclick=metseeBig('smallimg1','[field:imgsrc/]') title='[field:title/]' style='cursor:pointer'><img border='0'  id='smallimg1' src='[field:imgsrc/]' width='50' height='50' alt='[field:title/]' title='[field:title/]' ></a></span>

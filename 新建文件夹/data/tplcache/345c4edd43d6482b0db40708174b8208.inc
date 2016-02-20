@@ -1,0 +1,1 @@
+ <span class='info_img' id='imgqwe'><a id='view_bigimg' href='[field:imgsrc/]' title=查看大图 target='_blank'><img id='view_img' border='0' alt='[field:title/]' title='[field:title/]' width=380 height=280 src='[field:imgsrc/]'></a></span> 

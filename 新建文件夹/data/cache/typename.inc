@@ -1,0 +1,33 @@
+<?php
+$typeArr[1] = '关于鑫港仪器仪表';
+$typeArr[2] = '公司简介';
+$typeArr[3] = '公司理念';
+$typeArr[4] = '组织机构';
+$typeArr[5] = '联系鑫港仪器仪表';
+$typeArr[6] = '植物油产品';
+$typeArr[7] = '花生油';
+$typeArr[8] = '大豆油';
+$typeArr[9] = '调和油';
+$typeArr[10] = '葵花籽油';
+$typeArr[11] = '鑫港仪器仪表新闻';
+$typeArr[12] = '公司动态';
+$typeArr[13] = '行业新闻';
+$typeArr[14] = '健康百分百';
+$typeArr[15] = '8条健康建议';
+$typeArr[16] = '如何鉴别地沟油';
+$typeArr[17] = '小油滴的大秘密';
+$typeArr[18] = '植物油加盟';
+$typeArr[19] = '加盟政策';
+$typeArr[20] = '产品优势';
+$typeArr[21] = '营销网络';
+$typeArr[22] = '在线加盟';
+$typeArr[33] = '仪器仪表产品';
+$typeArr[34] = '电子测量仪器';
+$typeArr[35] = '工业自动化仪表';
+$typeArr[36] = '试验设备';
+$typeArr[37] = '温度·密度仪表';
+$typeArr[38] = '测量仪器';
+$typeArr[39] = '玻璃仪器';
+$typeArr[40] = '分析滤纸';
+$typeArr[41] = '普通仪器';
+?>

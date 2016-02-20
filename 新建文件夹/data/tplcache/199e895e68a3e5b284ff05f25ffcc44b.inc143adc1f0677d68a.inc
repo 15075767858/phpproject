@@ -1,0 +1,19 @@
+<?php
+$z[0]=Array("item","\r\n",31,203);
+$z[0][4]['name']="sina_日韩明星";
+$z[0][4]['imgurl']="/upimg";
+$z[0][4]['imgdir']="../upimg";
+$z[0][4]['language']="gb2312";
+$z[0][4]['isref']="no";
+$z[0][4]['refurl']="";
+$z[0][4]['exptime']="10";
+$z[0][4]['typeid']="1";
+$z[0][4]['matchtype']="string";
+$z[1]=Array("list","\r\n  {dede:url value='http://ent.sina.com.cn/star/jp_kr/more.html'}{/dede:url}	\r\n  {dede:need}ent.sina.com.cn{/dede:need}\r\n  {dede:cannot}blog{/dede:cannot}\r\n  {dede:linkarea}<tr><td colspan=2 class=f149>[var:区域]<tr><td colspan=2 valign=bottom background{/dede:linkarea}\r\n",244,608);
+$z[1][4]['source']="var";
+$z[1][4]['sourcetype']="list";
+$z[1][4]['varstart']="";
+$z[1][4]['varend']="";
+$z[2]=Array("art","\r\n{dede:sppage sptype='none'}{/dede:sppage}\r\n  \r\n  {dede:note field='dede_archives.title' value='[var:内容]' comment='文章标题'\r\n   isunit='' isdown=''}\r\n    \r\n    {dede:match}<h1>[var:内容]</h1>{/dede:match}\r\n        {dede:trim}<!(.*)>{/dede:trim}\r\n    {dede:trim}<b>{/dede:trim}\r\n    {dede:trim}</b>{/dede:trim}\r\n    {dede:trim}</b-->{/dede:trim}\r\n    {dede:trim}<div(.*)>{/dede:trim}\r\n    {dede:trim}</div>{/dede:trim}\r\n    {dede:trim}<a(.*)>{/dede:trim}\r\n    {dede:trim}</a>{/dede:trim}\r\n\r\n    {dede:function}{/dede:function}\r\n    \r\n  {/dede:note}\r\n  \r\n  {dede:note field='dede_addonarticle.body' value='[var:内容]' comment='文章内容'\r\n   isunit='' isdown=''}\r\n    \r\n    {dede:match}<!--正文内容开始-->[var:内容]<!--正文内容结束-->{/dede:match}\r\n        {dede:trim}<input(.*)>{/dede:trim}\r\n    {dede:trim}<form(.*)>{/dede:trim}\r\n    {dede:trim}</form>{/dede:trim}\r\n    {dede:trim}<!(.*)>{/dede:trim}\r\n    {dede:trim}<div(.*)>{/dede:trim}\r\n    {dede:trim}</div>{/dede:trim}\r\n    {dede:trim}<a(.*)>{/dede:trim}\r\n    {dede:trim}</a>{/dede:trim}\r\n    {dede:trim}<span(.*)>{/dede:trim}\r\n    {dede:trim}</span>{/dede:trim}\r\n    {dede:trim}(blog){/dede:trim}\r\n    {dede:trim}<font(.*)>{/dede:trim}\r\n    {dede:trim}</font>{/dede:trim}\r\n    {dede:trim}(听歌,blog){/dede:trim}\r\n    {dede:trim}新浪娱乐独家稿件(.*)>全部或部分转载。{/dede:trim}\r\n\r\n    {dede:function}{/dede:function}\r\n    \r\n  {/dede:note}\r\n  \r\n  {dede:note field='dede_archives.writer' value='[var:内容]' comment='文章作者'\r\n   isunit='' isdown=''}\r\n    \r\n    {dede:match}{/dede:match}\r\n    \r\n    {dede:function}{/dede:function}\r\n    \r\n  {/dede:note}\r\n  \r\n  {dede:note field='dede_archives.source' value='[var:内容]' comment='文章来源'\r\n   isunit='' isdown=''}\r\n    \r\n    {dede:match}<span class=\"linkRed02\">[var:内容]</a></span></font></div>{/dede:match}\r\n        {dede:trim}<!(.*)>{/dede:trim}\r\n    {dede:trim}<div(.*)>{/dede:trim}\r\n    {dede:trim}</div>{/dede:trim}\r\n    {dede:trim}<a(.*)>{/dede:trim}\r\n    {dede:trim}</a>{/dede:trim}\r\n\r\n    {dede:function}{/dede:function}\r\n    \r\n  {/dede:note}\r\n  \r\n  {dede:note field='dede_archives.pubdate' value='[var:内容]' comment='发布时间'\r\n   isunit='' isdown=''}\r\n    \r\n    {dede:match}{/dede:match}\r\n    \r\n    {dede:function}if(@me!=\"\") @me = GetMkTime(@me);\r\nelse @me = time();{/dede:function}\r\n    \r\n  {/dede:note}\r\n  \r\n  {dede:note field='dede_archives.sortrank' value='[var:内容]' comment='排序级别'\r\n   isunit='' isdown=''}\r\n    \r\n    {dede:match}{/dede:match}\r\n    \r\n    {dede:function}@me = time();{/dede:function}\r\n    \r\n  {/dede:note}\r\n  \r\n  {dede:note field='dede_archives.litpic' value='[var:内容]' comment='缩略图'\r\n   isunit='' isdown=''}\r\n    \r\n    {dede:match}{/dede:match}\r\n    \r\n    {dede:function}@me = @litpic;{/dede:function}\r\n    \r\n  {/dede:note}\r\n  \r\n  {dede:note field='dede_archives.senddate' value='[var:内容]' comment='录入时间'\r\n   isunit='' isdown=''}\r\n    \r\n    {dede:match}{/dede:match}\r\n    \r\n    {dede:function}@me = time();{/dede:function}\r\n    \r\n  {/dede:note}\r\n",649,3756);
+
+?>

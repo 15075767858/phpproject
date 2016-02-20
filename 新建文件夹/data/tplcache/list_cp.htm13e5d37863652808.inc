@@ -1,0 +1,43 @@
+<?php
+$z[0]=Array("field","",66,85);
+$z[0][4]['name']="title";
+$z[1]=Array("global","",86,112);
+$z[1][4]['name']="cfg_webname";
+$z[2]=Array("field","",153,182);
+$z[2][4]['name']="keywords";
+$z[3]=Array("field","",222,280);
+$z[3][4]['name']="description";
+$z[3][4]['function']="html2text(@me)";
+$z[4]=Array("include","",721,756);
+$z[4][4]['filename']="head.htm";
+$z[5]=Array("field","",897,955);
+$z[5][4]['name']="typeid";
+$z[5][4]['function']="GetTopTypename(@me)";
+$z[6]=Array("channel","\r\n        <dl class=\"list-none navnow\">\r\n          <dt id='part2_6'><a href='[field:typeurl/]'  title='[field:typename/]'><span>[field:typename/]</span></a></dt>\r\n        </dl>\r\n        ",1057,1467);
+$z[6][4]['type']="son";
+$z[6][4]['currentstyle']="<dl class='list-none navnow'> <dt id='part2_6' class='on'><a href='~typelink~' class='zm'><span>~typename~</span></a></dt> </dl>";
+$z[7]=Array("mytag","",1755,1782);
+$z[7][4]['name']="dizhi";
+$z[8]=Array("mytag","",1831,1860);
+$z[8][4]['name']="dianhua";
+$z[9]=Array("mytag","",1908,1936);
+$z[9][4]['name']="shouji";
+$z[10]=Array("mytag","",1980,2004);
+$z[10][4]['name']="qq";
+$z[11]=Array("mytag","",2052,2081);
+$z[11][4]['name']="wangzhi";
+$z[12]=Array("mytag","",2125,2152);
+$z[12][4]['name']="email";
+$z[13]=Array("field","",2433,2462);
+$z[13][4]['name']="position";
+$z[14]=Array("field","",2484,2509);
+$z[14][4]['name']="name";
+$z[15]=Array("list","\r\n        <li class='list' style='width:205px; margin-left:19px; margin-right:19px;'><a href='[field:arcurl/]' title='[field:title/]' target='_self' class='img'><img src='[field:picname/]' alt='[field:title/]' title='[field:title/]' width='203' height='150' /></a>\r\n          <h3><a href='[field:arcurl/]' title='[field:title/]' target='_self'>[field:title/]</a></h3>\r\n        </li>\r\n        ",2656,3084);
+$z[15][4]['pagesize']="9";
+$z[16]=Array("pagelist","",3201,3279);
+$z[16][4]['listitem']="info,index,end,pre,next,pageno,option";
+$z[16][4]['listsize']="5";
+$z[17]=Array("include","",3346,3383);
+$z[17][4]['filename']="footer.htm";
+
+?>
