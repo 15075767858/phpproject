@@ -10,12 +10,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=9" />
     <title>BACnet Router&Control</title>
     <style type="text/css">
-    
     .main {
         margin-left: 50px;
         width: 753px;
         margin-top: 50px;
     }
+    
     .configcontent {
         display: -webkit-box;
         display: -moz-box;
@@ -33,68 +33,90 @@
         height: 150px;
         padding-top: 13px;
     }
+    
     .row3:nth-child(3) {
-        
         height: 130px;
     }
+    
     .row3>ul {
-    display: block;
+        display: block;
     }
+    
     .row3>* {
         width: 30%;
         float: left;
     }
-    .row3>div:nth-child(1)>span{
-    	font-size: 18px;
+    
+    .row3>div:nth-child(1)>span {
+        font-size: 18px;
     }
-
-    .row3:nth-child(1)>input{
-    	margin-top:63px;
+    
+    .row3:nth-child(1)>input {
+        margin-top: 63px;
     }
-	.row3:nth-child(3)>input{
-    	margin-top:40px;
+    
+    .row3:nth-child(3)>input {
+        margin-top: 40px;
     }
-    .row2{
-    	margin-top:22px;
+    
+    .row2 {
+        margin-top: 22px;
     }
-    .row2>div{
-    	border:0px solid red;
+    
+    .row2>div {
+        border: 0px solid red;
     }
-	.row2>.d1{display: block;
-		float:left;
-		width: 29%;
-	}
-	.row2>.d2{
-display: block;
-		float:left;
-		width: 29%;
-	}
- 	.row2>.d3{
- 		width: 42%;
- 		float: left;
- 	}
- 	.row2>.d3 select{
- 		width: 200px;
- 	}
-    .modal-body{
+    
+    .row2>.d1 {
+        display: block;
+        float: left;
+        width: 29%;
+    }
+    
+    .row2>.d2 {
+        display: block;
+        float: left;
+        width: 29%;
+    }
+    
+    .row2>.d3 {
+        width: 42%;
+        float: left;
+    }
+    
+    .row2>.d3 select {
+        width: 200px;
+    }
+    
+    .modal-body {
         background-color: dimgrey;
     }
-    .modal-body textarea{
-        background: rgb(0,0,0);
-        color: rgb(255,255,255);
+    
+    .modal-body textarea {
+        background: rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
         width: 100%;
         height: 300px;
     }
-    .modal-footer button{
-    }
-    input[type=radio]:checked{
+    
+    .modal-footer button {}
+    
+    input[type=radio]:checked {
         background: red;
+    }
+
+    #xmlpan{
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border:1px solid red;
+      left: 811px;
+    top: 250px;
     }
     </style>
 </head>
 
 <body>
-    
     <img clss="titleimg" src="title.png" width="960" height="200" />
     <div class="main">
         <div class="panel panel-primary">
@@ -120,10 +142,9 @@ display: block;
                             <input type="checkbox" id="concheck4">
                             <span>Modbus Enable</span></li>
                     </ul>
-                    <input class='btn btn-info' id="modCon"  data-toggle="modal" data-target="#myModal1"  type="button" value="Modbus Config">
-                   
+                    <input class='btn btn-info' id="modCon" data-toggle="modal" data-target="#myModal1" type="button" value="Modbus Config">
                 </div>
-                 <div style="clear:both;"></div>
+                <div style="clear:both;"></div>
                 <div class="row3">
                     <div>
                         <input type="radio" data-name="global" name="BACnet">
@@ -140,83 +161,82 @@ display: block;
                             <input type="checkbox" id="concheck7">
                             <span>Global Enable</span></li>
                     </ul>
-                    <input class='btn btn-info'  data-toggle="modal" data-target="#myModal2" type="button" value="Global Point Config">
+                    <input class='btn btn-info' id="gloCon" data-toggle="modal" data-target="#myModal2" type="button" value="Global Point Config">
                     <div style="clear:both;"></div>
                 </div>
-                 <div style="clear:both;"></div>
+                <div style="clear:both;"></div>
                 <div class="row2">
-                	<div class="d1">
-                    <input type="radio" name="AD">
-                    <span>Add</span>
+                    <div class="d1">
+                        <input type="radio" name="AD">
+                        <span>Add</span>
                     </div>
-
                     <div class="d2">
-                    <input type="radio" name="AD">
-                    <span>Delete</span>
+                        <input type="radio" name="AD">
+                        <span>Delete</span>
                     </div>
                     <div class="d3">
-                    <select >
-                   		<option>   </option>
-                        <option>MS/TP Client</option>
-                        <option>Progarm Enable</option>
-                        <option>Global Enable</option>
-                        <option>Modbus Enable</option>
-                        <option>BACnet Router</option>
-                        <option>Progarm Enable</option>
-                        <option>Global Enable</option>
-                    </select>
-                    <a class="btn btn-danger btn-xs"  >   Ok  </a>
-                    <a class="btn btn-danger btn-xs " href=""> cancle </a>
+                        <select>
+                            <option> </option>
+                            <option>MS/TP Client</option>
+                            <option>Progarm Enable</option>
+                            <option>Global Enable</option>
+                            <option>Modbus Enable</option>
+                            <option>BACnet Router</option>
+                        </select>
+                        <a class="btn btn-danger btn-xs" id="ok">   Ok  </a>
+                        <a class="btn btn-danger btn-xs " href=""> cancle </a>
                     </div>
                 </div>
             </div>
         </div>
+    
+
+<div id="xmlpan" class="panel panel-default">
+  <div class="panel-heading">Panel heading without title</div>
+  <div class="panel-body">
+    Panel content
+  </div>
+</div>
+
     </div>
 
 
 </body>
-
-
 <!-- Modal -->
 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modbus.xml Config</h4>
-      </div>
-      <div class="modal-body">
-        <textarea  data-id="modbus"></textarea>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger">Save changes</button>
-      </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modbus.xml Config</h4>
+            </div>
+            <div class="modal-body">
+                <textarea data-id="modbus"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger">Save changes</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
-
-
-
-
-
 <!-- Modal -->
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Global.xml Config</h4>
-      </div>
-      <div class="modal-body">
-        <textarea data-id="global"></textarea>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger">Save changes</button>
-      </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Global.xml Config</h4>
+            </div>
+            <div class="modal-body">
+                <textarea data-id="global"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger">Save changes</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -224,140 +244,172 @@ display: block;
 <script type="text/javascript">
 //modbus
 
+function showGuard(){
 
+$.ajax({
+        type: "POST",
+        url: "xmlRW.php",
+        data: "fileName=guard.xml&rw=r",
 
-(function(){
+        success: function(result) {
+            //alert(result)
+            //modbusMod==loadXML(result);
+            $("#xmlpan .panel-body").
+            var xmlDoc = $.parseXML(result);
+            var quard = $(xmlDoc).find("root").find("*");
+
+            // var xmlDom=loadXML(result);
+            //$("textarea[data-id=modbus]").val(xmlToStr(xmlDom));
+            //$("textarea[data-id=modbus]").val(result);
+        }
+    });
+}
+(function() {
 
     var modbusMod;
     var globalMod;
-$.ajax({
-   type: "POST",
-   url: "xmlRW.php",
-   data: "fileName=modules.xml&rw=r",
-   success: function(result){
-    //modbusMod==loadXML(result);
-    xmlDoc = $.parseXML( result );
-      modbusMod = $( xmlDoc );
-    // var xmlDom=loadXML(result);
-     //$("textarea[data-id=modbus]").val(xmlToStr(xmlDom));
-     $("textarea[data-id=modbus]").val(result);
-   }
-});
-
-$.ajax({
-   type: "POST",
-   url: "xmlRW.php",
-   data: "fileName=global.xml&rw=r",
-   success: function(result){
-    //globalMod==loadXML(result);
-    xmlDoc = $.parseXML( result );
-      globalMod = $( xmlDoc );
-     //var xmlDom=loadXML(result);
-//$("textarea[data-id=global]").val(xmlToStr(xmlDom));
-  $("textarea[data-id=global]").val(result);
-   }
-});
-
-//$(this).parents(".row3").find("input:checkbox,input:button").attr("checked","checked");
     
-$(".configcontent input:checkbox,input:button").attr("disabled","disabled");
-$(".configcontent input:radio[name=BACnet]").on("change",function(){
-    $(".configcontent input:checkbox,input:button").attr("disabled","disabled");
-    $(this).parents(".row3").find("input:checkbox,input:button").attr("disabled",null);
-    //var xname=$(this).data("name");
-    //$(this).parents(".row3").find("input:checkbox").on("change",function(){
-    //    $(".modal-body textarea[data-id="+xname+"]").val("adfasdfasdfasdfa");
-/*var xmlDoc = $.parseXML($("textarea[data-id="+xname+"]").val());
-      $xml = $(xmlDoc);
-      driver=$xml.find("driver");
-      for (var i = 0; i < driver.length; i++) {
-         $(this).parents(".row3").find("input:checkbox[data-name="+$(driver[i]).attr("name");+"]").attr("checked","checked");
-      }*/
-      
+//过去不管是好是坏，都是你回不去的曾经，生命中每一个人再见可能都不会再见，都是失去后才想起过去的点点滴滴是那么美好,能否有缘再见？
+ 
 
-});
+    $("#modCon").on("click", function() {
+        var xml = $($.parseXML('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><root></root>'));
+        xml = $(loadXML('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><root></root>'));
+        if ($("#concheck1")[0].checked) {
+            xml.find("root").append('\n' + '<driver feed_dog="1" name="bac-server"/>' + '\n');
+        }
+        if ($("#concheck2")[0].checked) {
+            xml.find("root").append('\n' + '<driver feed_dog="1" name="bac-client"/>' + '\n');
+            xml.find("root").append('\n' + '<driver feed_dog="1" name="bac-logic"/>' + '\n');
+        }
+        if ($("#concheck3")[0].checked) {
+            xml.find("root").append('\n' + '<driver feed_dog="1" name="bac-global"/>' + '\n');
+        }
+        if ($("#concheck4")[0].checked) {
+            xml.find("root").append('\n' + '<driver feed_dog="1" name="bac-modbus"/>' + '\n');
+        }
+
+        $(".modal-body textarea[data-id=modbus]").val(xmlToStr(xml[0]));
+
+    });
+
+    $("#gloCon").on("click", function() {
+        var xml = $($.parseXML('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><root></root>'));
+        xml = $(loadXML('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><root></root>'));
+        if ($("#concheck5")[0].checked) {
+            xml.find("root").append('\n' + '<driver feed_dog="1" name="bac-server"/>' + '\n');
+        }
+        if ($("#concheck6")[0].checked) {
+            xml.find("root").append('\n' + '<driver feed_dog="1" name="bac-client"/>' + '\n');
+            xml.find("root").append('\n' + '<driver feed_dog="1" name="bac-logic"/>' + '\n');
+        }
+        if ($("#concheck7")[0].checked) {
+            xml.find("root").append('\n' + '<driver feed_dog="1" name="bac-global"/>' + '\n');
+        }
+        $(".modal-body textarea[data-id=global]").val(xmlToStr(xml[0]));
+    });
+    $("#ok").on("click", function() {
+        var seval = $(this).siblings("select").val();
+        alert(seval)
+    });
+
+    
+})();
+  /* $.ajax({
+        type: "POST",
+        url: "xmlRW.php",
+        data: "fileName=global.xml&rw=r",
+        success: function(result) {
+            //globalMod==loadXML(result);
+            xmlDoc = $.parseXML(result);
+            globalMod = $(xmlDoc);
+            //var xmlDom=loadXML(result);
+            //$("textarea[data-id=global]").val(xmlToStr(xmlDom));
+            $("textarea[data-id=global]").val(result);
+        }
+    }); * /
+
+    //$(this).parents(".row3").find("input:checkbox,input:button").attr("checked","checked");
+
+    $(".configcontent input:checkbox,input:button").attr("disabled", "disabled");
+    $(".configcontent input:radio[name=BACnet]").on("change", function() {
+        $(".configcontent input:checkbox,input:button").attr("disabled", "disabled");
+        $(this).parents(".row3").find("input:checkbox,input:button").attr("disabled", null);
+        //var xname=$(this).data("name");
+        //$(this).parents(".row3").find("input:checkbox").on("change",function(){
+        //    $(".modal-body textarea[data-id="+xname+"]").val("adfasdfasdfasdfa");
+        /*var xmlDoc = $.parseXML($("textarea[data-id="+xname+"]").val());
+              $xml = $(xmlDoc);
+              driver=$xml.find("driver");
+              for (var i = 0; i < driver.length; i++) {
+                 $(this).parents(".row3").find("input:checkbox[data-name="+$(driver[i]).attr("name");+"]").attr("checked","checked");
+              }*/
 
 
-$("#modCon").on("click",function(){
-    var xml=$($.parseXML('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><root></root>'));
-
-if($("#concheck1")[0].checked){
-xml.find("root").append('<driver feed_dog="1" name="bac-client"/>');
-}
-alert(xmlToStr(xml[0]));
-$(".modal-body textarea[data-id=modbus]").val(xmlToStr(xml[0]));
-/*concheck2
-concheck3
-concheck4
-concheck5
-concheck6
-concheck7*/
-});
+    
 
 /*$(".configcontent input:checkbox").on("change",function(){
-var iId=$(this).data("id");
-switch(iId)
-{
-case 1:
-var xml = $($.parseXML($(".modal-body textarea[data-id=modbus]").val()));
-if($(this).context.checked){
-     $(xml).find("root").append('<driver feed_dog="1" name="bac-client"/>'+'\r\t');
-   
-    $(".modal-body textarea[data-id=modbus]").val(xmlToStr(xml[0]));
-   
-}else{
-   //$(xml).remove($(xml).find("driver[name=bac-client]"));
-   $(xml).remove($('<driver feed_dog="1" name="bac-client"/>'));
-   $(".modal-body textarea[data-id=modbus]").val(xmlToStr(xml[0]));
-}
-break;
-}
-});*/
-})();
-loadXML = function(xmlString){
-        var xmlDoc=null;
-        if(!window.DOMParser && window.ActiveXObject){ 
-            var xmlDomVersions = ['MSXML.2.DOMDocument.6.0','MSXML.2.DOMDocument.3.0','Microsoft.XMLDOM'];
-            for(var i=0;i<xmlDomVersions.length;i++){
-                try{
-                    xmlDoc = new ActiveXObject(xmlDomVersions[i]);
-                    xmlDoc.async = false;
-                    xmlDoc.loadXML(xmlString); 
-                }catch(e){
-                }
-            }
-        }
-        else if(window.DOMParser && document.implementation && document.implementation.createDocument){
-            try{
-                /* DOMParser 对象解析 XML 文本并返回一个 XML Document 对象。
-                 * 要使用 DOMParser，使用不带参数的构造函数来实例化它，然后调用其 parseFromString() 方法
-                 * parseFromString(text, contentType) 参数text:要解析的 XML 标记 参数contentType文本的内容类型
-                 * 可能是 "text/xml" 、"application/xml" 或 "application/xhtml+xml" 中的一个。注意，不支持 "text/html"。
-                 */
-                domParser = new  DOMParser();
-                xmlDoc = domParser.parseFromString(xmlString, 'text/xml');
-            }catch(e){
-            }
-        }
-        else{
-            return null;
-        }
-
-        return xmlDoc;
+    var iId=$(this).data("id");
+    switch(iId)
+    {
+    case 1:
+    var xml = $($.parseXML($(".modal-body textarea[data-id=modbus]").val()));
+    if($(this).context.checked){
+         $(xml).find("root").append('<driver feed_dog="1" name="bac-client"/>'+'\r\t');
+       
+        $(".modal-body textarea[data-id=modbus]").val(xmlToStr(xml[0]));
+       
+    }else{
+       //$(xml).remove($(xml).find("driver[name=bac-client]"));
+       $(xml).remove($('<driver feed_dog="1" name="bac-client"/>'));
+       $(".modal-body textarea[data-id=modbus]").val(xmlToStr(xml[0]));
     }
-xmlToStr=function(xmlDom){
-     if(xmlDom.xml){
-      //alert("IE:"+xmlDom.xml);
-      return xmlDom.xml;
+    break;
+    }
+    });*/
+loadXML = function(xmlString) {
+    var xmlDoc = null;
+    if (!window.DOMParser && window.ActiveXObject) {
+        var xmlDomVersions = ['MSXML.2.DOMDocument.6.0', 'MSXML.2.DOMDocument.3.0', 'Microsoft.XMLDOM'];
+        for (var i = 0; i < xmlDomVersions.length; i++) {
+            try {
+                xmlDoc = new ActiveXObject(xmlDomVersions[i]);
+                xmlDoc.async = false;
+                xmlDoc.loadXML(xmlString);
+            } catch (e) {}
+        }
+    } else if (window.DOMParser && document.implementation && document.implementation.createDocument) {
+        try {
+            /* DOMParser 对象解析 XML 文本并返回一个 XML Document 对象。
+             * 要使用 DOMParser，使用不带参数的构造函数来实例化它，然后调用其 parseFromString() 方法
+             * parseFromString(text, contentType) 参数text:要解析的 XML 标记 参数contentType文本的内容类型
+             * 可能是 "text/xml" 、"application/xml" 或 "application/xhtml+xml" 中的一个。注意，不支持 "text/html"。
+             */
+            domParser = new DOMParser();
+            xmlDoc = domParser.parseFromString(xmlString, 'text/xml');
+        } catch (e) {}
+    } else {
+        return null;
+    }
 
-      
-}else{
-      //alert(new XMLSerializer().serializeToString(xmlDom));
-      return new XMLSerializer().serializeToString(xmlDom);
+    return xmlDoc;
 }
+xmlToStr = function(xmlDom) {
+    if (isIE()) {
+        alert("Exception:no support IE browser,plase change borwser!");
+        return xmlDom.xml;
+    } else {
+        //alert(new XMLSerializer().serializeToString(xmlDom));
+        return new XMLSerializer().serializeToString(xmlDom);
+    }
 }
 
-
+function isIE() { //ie?  
+    if (!!window.ActiveXObject || "ActiveXObject" in window)
+        return true;
+    else
+        return false;
+}
 </script>
 
 </html>
