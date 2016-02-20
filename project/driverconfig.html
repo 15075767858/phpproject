@@ -23,6 +23,9 @@
         display: -webkit-box;
         display: box;
         -webkit-box-orient: vertical;
+        -moz-box-orient: vertical;
+        box-orient: vertical;
+        width: 100%;
     }
     
     .row3 {
@@ -73,6 +76,20 @@ display: block;
  	.row2>.d3 select{
  		width: 200px;
  	}
+    .modal-body{
+        background-color: dimgrey;
+    }
+    .modal-body textarea{
+        background: rgb(0,0,0);
+        color: rgb(255,255,255);
+        width: 100%;
+        height: 300px;
+    }
+    .modal-footer button{
+    }
+    input[type=radio]:checked{
+        background: red;
+    }
     </style>
 </head>
 
@@ -86,44 +103,44 @@ display: block;
             <div class="panel-body configcontent">
                 <div class="row3">
                     <div>
-                        <input type="radio" name="BACnet">
+                        <input type="radio" data-name="modbus" name="BACnet">
                         <span>BACnet IP</span>
                     </div>
                     <ul>
                         <li>
-                            <input type="checkbox">
+                            <input type="checkbox" id="concheck1">
                             <span>MS/TP Client</span></li>
                         <li>
-                            <input type="checkbox">
+                            <input type="checkbox" id="concheck2">
                             <span>Progarm Enable</span></li>
                         <li>
-                            <input type="checkbox">
+                            <input type="checkbox" id="concheck3">
                             <span>Global Enable</span></li>
                         <li>
-                            <input type="checkbox">
+                            <input type="checkbox" id="concheck4">
                             <span>Modbus Enable</span></li>
                     </ul>
-                    <input class='btn btn-info'  type="button" value="Modbus Config">
+                    <input class='btn btn-info' id="modCon"  data-toggle="modal" data-target="#myModal1"  type="button" value="Modbus Config">
                    
                 </div>
                  <div style="clear:both;"></div>
                 <div class="row3">
                     <div>
-                        <input type="radio" name="BACnet">
+                        <input type="radio" data-name="global" name="BACnet">
                         <span>BACnet Router</span>
                     </div>
                     <ul>
                         <li>
-                            <input type="checkbox">
+                            <input type="checkbox" id="concheck5">
                             <span>BACnet Router</span></li>
                         <li>
-                            <input type="checkbox">
+                            <input type="checkbox" id="concheck6">
                             <span>Progarm Enable</span></li>
                         <li>
-                            <input type="checkbox">
+                            <input type="checkbox" id="concheck7">
                             <span>Global Enable</span></li>
                     </ul>
-                    <input class='btn btn-info' type="button" value="Global Point Config">
+                    <input class='btn btn-info'  data-toggle="modal" data-target="#myModal2" type="button" value="Global Point Config">
                     <div style="clear:both;"></div>
                 </div>
                  <div style="clear:both;"></div>
@@ -148,8 +165,8 @@ display: block;
                         <option>Progarm Enable</option>
                         <option>Global Enable</option>
                     </select>
-                    <input class=" btn-success" type="button" value="  Ok  ">
-                    <input class=" btn-danger" type="button" value=" cancle ">
+                    <a class="btn btn-danger btn-xs"  >   Ok  </a>
+                    <a class="btn btn-danger btn-xs " href=""> cancle </a>
                     </div>
                 </div>
             </div>
@@ -159,24 +176,21 @@ display: block;
 
 </body>
 
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Modbus.xml Config</h4>
       </div>
       <div class="modal-body">
-        ...
+        <textarea  data-id="modbus"></textarea>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-danger">Save changes</button>
       </div>
     </div>
   </div>
@@ -184,32 +198,166 @@ display: block;
 
 
 
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
+
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Global.xml Config</h4>
       </div>
       <div class="modal-body">
-        ...
+        <textarea data-id="global"></textarea>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-danger">Save changes</button>
       </div>
     </div>
   </div>
 </div>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/jselectivizr.js"></script>
+<script src="js/selectivizr.js"></script>
 <script type="text/javascript">
+//modbus
+
+
+
+(function(){
+
+    var modbusMod;
+    var globalMod;
+$.ajax({
+   type: "POST",
+   url: "xmlRW.php",
+   data: "fileName=modules.xml&rw=r",
+   success: function(result){
+    //modbusMod==loadXML(result);
+    xmlDoc = $.parseXML( result );
+      modbusMod = $( xmlDoc );
+    // var xmlDom=loadXML(result);
+     //$("textarea[data-id=modbus]").val(xmlToStr(xmlDom));
+     $("textarea[data-id=modbus]").val(result);
+   }
+});
+
+$.ajax({
+   type: "POST",
+   url: "xmlRW.php",
+   data: "fileName=global.xml&rw=r",
+   success: function(result){
+    //globalMod==loadXML(result);
+    xmlDoc = $.parseXML( result );
+      globalMod = $( xmlDoc );
+     //var xmlDom=loadXML(result);
+//$("textarea[data-id=global]").val(xmlToStr(xmlDom));
+  $("textarea[data-id=global]").val(result);
+   }
+});
+
+//$(this).parents(".row3").find("input:checkbox,input:button").attr("checked","checked");
+    
+$(".configcontent input:checkbox,input:button").attr("disabled","disabled");
+$(".configcontent input:radio[name=BACnet]").on("change",function(){
+    $(".configcontent input:checkbox,input:button").attr("disabled","disabled");
+    $(this).parents(".row3").find("input:checkbox,input:button").attr("disabled",null);
+    //var xname=$(this).data("name");
+    //$(this).parents(".row3").find("input:checkbox").on("change",function(){
+    //    $(".modal-body textarea[data-id="+xname+"]").val("adfasdfasdfasdfa");
+/*var xmlDoc = $.parseXML($("textarea[data-id="+xname+"]").val());
+      $xml = $(xmlDoc);
+      driver=$xml.find("driver");
+      for (var i = 0; i < driver.length; i++) {
+         $(this).parents(".row3").find("input:checkbox[data-name="+$(driver[i]).attr("name");+"]").attr("checked","checked");
+      }*/
+      
+
+});
+
+
+$("#modCon").on("click",function(){
+    var xml=$($.parseXML('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><root></root>'));
+
+if($("#concheck1")[0].checked){
+xml.find("root").append('<driver feed_dog="1" name="bac-client"/>');
+}
+alert(xmlToStr(xml[0]));
+$(".modal-body textarea[data-id=modbus]").val(xmlToStr(xml[0]));
+/*concheck2
+concheck3
+concheck4
+concheck5
+concheck6
+concheck7*/
+});
+
+/*$(".configcontent input:checkbox").on("change",function(){
+var iId=$(this).data("id");
+switch(iId)
+{
+case 1:
+var xml = $($.parseXML($(".modal-body textarea[data-id=modbus]").val()));
+if($(this).context.checked){
+     $(xml).find("root").append('<driver feed_dog="1" name="bac-client"/>'+'\r\t');
+   
+    $(".modal-body textarea[data-id=modbus]").val(xmlToStr(xml[0]));
+   
+}else{
+   //$(xml).remove($(xml).find("driver[name=bac-client]"));
+   $(xml).remove($('<driver feed_dog="1" name="bac-client"/>'));
+   $(".modal-body textarea[data-id=modbus]").val(xmlToStr(xml[0]));
+}
+break;
+}
+});*/
+})();
+loadXML = function(xmlString){
+        var xmlDoc=null;
+        if(!window.DOMParser && window.ActiveXObject){ 
+            var xmlDomVersions = ['MSXML.2.DOMDocument.6.0','MSXML.2.DOMDocument.3.0','Microsoft.XMLDOM'];
+            for(var i=0;i<xmlDomVersions.length;i++){
+                try{
+                    xmlDoc = new ActiveXObject(xmlDomVersions[i]);
+                    xmlDoc.async = false;
+                    xmlDoc.loadXML(xmlString); 
+                }catch(e){
+                }
+            }
+        }
+        else if(window.DOMParser && document.implementation && document.implementation.createDocument){
+            try{
+                /* DOMParser 对象解析 XML 文本并返回一个 XML Document 对象。
+                 * 要使用 DOMParser，使用不带参数的构造函数来实例化它，然后调用其 parseFromString() 方法
+                 * parseFromString(text, contentType) 参数text:要解析的 XML 标记 参数contentType文本的内容类型
+                 * 可能是 "text/xml" 、"application/xml" 或 "application/xhtml+xml" 中的一个。注意，不支持 "text/html"。
+                 */
+                domParser = new  DOMParser();
+                xmlDoc = domParser.parseFromString(xmlString, 'text/xml');
+            }catch(e){
+            }
+        }
+        else{
+            return null;
+        }
+
+        return xmlDoc;
+    }
+xmlToStr=function(xmlDom){
+     if(xmlDom.xml){
+      //alert("IE:"+xmlDom.xml);
+      return xmlDom.xml;
+
+      
+}else{
+      //alert(new XMLSerializer().serializeToString(xmlDom));
+      return new XMLSerializer().serializeToString(xmlDom);
+}
+}
+
+
 </script>
 
 </html>

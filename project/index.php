@@ -13,7 +13,10 @@
 	width: 100%;
 
 }
-
+.modal-content {
+	    width: 327px;
+	    margin: auto;
+	}
 .div-c {
 	font-family: Arial, Helvetica, sans-serif;
 }
