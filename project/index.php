@@ -196,7 +196,7 @@
     </div>
 
     <div class="div-set5">
-        <div align="center"><a href="reset.htm" title="Reboot">Reboot</a></div>
+        <div align="center"><a  id="reboot" title="Reboot">Reboot</a></div>
     </div>
     <div class="div-set6" id="divset6">
         <div align="center"><a href="php.zip" title="download">download</a></div>
@@ -380,6 +380,21 @@
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
     (function () {
+        $("#reboot").on("click",function(){
+
+            $.ajax({
+                type: "get",
+                url: "Reboot.php",
+                dataType: 'json',
+                data: "",
+                success: function () {
+
+                }
+            });
+            alert("reboot success");
+            window.location.reload();
+        })
+
         var jDate = parseINIString(document.getElementById("data").innerHTML);
         var DHCP = jDate["[LOCAL_MACHINE"].DHCP.replace(/\"/g, " ").split(".");
         var DefaultGateway = jDate["[LOCAL_MACHINE"].DefaultGateway.replace(/\"/g, " ").split(".");
