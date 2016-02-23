@@ -187,7 +187,7 @@
     </div>
 
     <div class="div-set2" id="date">
-        <div align="center"><a href="driverconfig" title="Date&time">Date time</a></div>
+        <div align="center"><a href="#" id="datetime" title="Date&time">Date time</a></div>
     </div>
 
     <div class="div-set3" id="bacnetconfig">
@@ -196,7 +196,7 @@
     </div>
 
     <div class="div-set5">
-        <div align="center"><a  id="reboot" title="Reboot">Reboot</a></div>
+        <div align="center"><a id="reboot" href="#" title="Reboot">Reboot</a></div>
     </div>
     <div class="div-set6" id="divset6">
         <div align="center"><a href="php.zip" title="download">download</a></div>
@@ -380,51 +380,81 @@
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
     (function () {
-        $("#reboot").on("click",function(){
 
+        $("#datetime").on("click",function(){
+            var oDate = new Date(); //实例一个时间对象；
+            var year = oDate.getFullYear();   //获取系统的年；
+            var month=oDate.getMonth()+1;   //获取系统月份，由于月份是从0开始计算，所以要加1
+            var date=oDate.getDate(); // 获取系统日，
+            var hours=oDate.getHours(); //获取系统时，
+            var min=oDate.getMinutes(); //分
+            var seconds=oDate.getSeconds(); //秒
+            var curDate=year +"-"+ month +"-"+ date;
+            var curTime= hours+":"+min+":"+seconds;
+            //alert(curDate+curTime);
             $.ajax({
-                type: "get",
-                url: "Reboot.php",
+                type: "post",
+                url: "setdate.php",
                 dataType: 'json',
-                data: "",
-                success: function () {
-
+                data: "date="+curDate+"&time="+curTime,
+                success: function (res) {
+                    alert("change date success."+res)
                 }
             });
-            alert("reboot success");
-            window.location.reload();
-        })
+        });
+        $("#reboot").on("click", function () {
 
-        var jDate = parseINIString(document.getElementById("data").innerHTML);
-        var DHCP = jDate["[LOCAL_MACHINE"].DHCP.replace(/\"/g, " ").split(".");
-        var DefaultGateway = jDate["[LOCAL_MACHINE"].DefaultGateway.replace(/\"/g, " ").split(".");
-        var IPAddress = jDate["[LOCAL_MACHINE"].IPAddress.replace(/\"/g, " ").split(".");
-        var SubnetMask = jDate["[LOCAL_MACHINE"].SubnetMask.replace(/\"/g, " ").split(".");
-        for (var i = 0; i < 4; i++) {
-            $("#DHCP" + (i + 1)).val(DHCP[i].trim());
-            $("#DefaultGateway" + (i + 1)).val($.trim(DefaultGateway[i]));
-            $("#IPAddress" + (i + 1)).val($.trim(IPAddress[i]));
-            $("#SubnetMask" + (i + 1)).val($.trim(SubnetMask[i]));
+            var r = confirm("Worning:Press qu'ren server restart!");
+            if (r == true) {
+                alert("reboot success");
+
+                $.ajax({
+                    type: "get",
+                    url: "Reboot.php",
+                    dataType: 'json',
+                    data: "",
+                    success: function () {
+
+                    }
+                });
+                window.location.reload();
+
+
         }
 
-        var Name = jDate["[USER_EXE"].Name.replace(/\"/g, "");
-        var Parameters = jDate["[USER_EXE"].Parameters.replace(/\"/g, "");
-        $("#Name").val(Name);
-        $("#Parameters").val(Parameters);
-        $("#changeinisub").on("click", function () {
-            var DHCP = $("#DHCP1").val() + "." + $("#DHCP2").val() + "." + $("#DHCP3").val() + "." + $("#DHCP4").val();
-            var DefaultGateway = $("#DefaultGateway1").val() + "." + $("#DefaultGateway2").val() + "." + $("#DefaultGateway3").val() + "." + $("#DefaultGateway4").val();
-            var IPAddress = $("#IPAddress1").val() + "." + $("#IPAddress2").val() + "." + $("#IPAddress3").val() + "." + $("#IPAddress4").val();
-            var SubnetMask = $("#SubnetMask1").val() + "." + $("#SubnetMask2").val() + "." + $("#SubnetMask3").val() + "." + $("#SubnetMask4").val();
-            SubnetMask = SubnetMask.trim();
-            console.log(SubnetMask)
-            if (SubnetMask != "255.255.255.0" & SubnetMask != "255.255.0.0") {
-                alert("error SubnetMask only 255.255.255.0 or 255.255.0.0")
-                return;
-            }
-            var Name = $("#Name").val();
-            var Parameters = $("#Parameters").val();
-            var uploadData = '[LOCAL_MACHINE]\
+    })
+
+
+    var jDate = parseINIString(document.getElementById("data").innerHTML);
+    var DHCP = jDate["[LOCAL_MACHINE"].DHCP.replace(/\"/g, " ").split(".");
+    var DefaultGateway = jDate["[LOCAL_MACHINE"].DefaultGateway.replace(/\"/g, " ").split(".");
+    var IPAddress = jDate["[LOCAL_MACHINE"].IPAddress.replace(/\"/g, " ").split(".");
+    var SubnetMask = jDate["[LOCAL_MACHINE"].SubnetMask.replace(/\"/g, " ").split(".");
+    for (var i = 0; i < 4; i++) {
+        $("#DHCP" + (i + 1)).val(DHCP[i].trim());
+        $("#DefaultGateway" + (i + 1)).val($.trim(DefaultGateway[i]));
+        $("#IPAddress" + (i + 1)).val($.trim(IPAddress[i]));
+        $("#SubnetMask" + (i + 1)).val($.trim(SubnetMask[i]));
+    }
+
+    var Name = jDate["[USER_EXE"].Name.replace(/\"/g, "");
+    var Parameters = jDate["[USER_EXE"].Parameters.replace(/\"/g, "");
+    $("#Name").val(Name);
+    $("#Parameters").val(Parameters);
+    $("#changeinisub").on("click", function () {
+        var DHCP = $("#DHCP1").val() + "." + $("#DHCP2").val() + "." + $("#DHCP3").val() + "." + $("#DHCP4").val();
+        var DefaultGateway = $("#DefaultGateway1").val() + "." + $("#DefaultGateway2").val() + "." + $("#DefaultGateway3").val() + "." + $("#DefaultGateway4").val();
+        var IPAddress = $("#IPAddress1").val() + "." + $("#IPAddress2").val() + "." + $("#IPAddress3").val() + "." + $("#IPAddress4").val();
+        var SubnetMask = $("#SubnetMask1").val() + "." + $("#SubnetMask2").val() + "." + $("#SubnetMask3").val() + "." + $("#SubnetMask4").val();
+        SubnetMask = SubnetMask.trim();
+        console.log(SubnetMask)
+        if (SubnetMask != "255.255.255.0" & SubnetMask != "255.255.0.0") {
+            alert("error SubnetMask only 255.255.255.0 or 255.255.0.0")
+            return;
+        }
+        var Name = $("#Name").val();
+        var Parameters = $("#Parameters").val();
+        var uploadData = '[LOCAL_MACHINE]\
 \nDHCP="' + DHCP + '"\
 \nDefaultGateway="' + DefaultGateway + '"\
 \nIPAddress="' + IPAddress + '"\
@@ -433,56 +463,59 @@
 \nName="' + Name + '"\
 \nParameters="' + Parameters + '"';
 
-            $.ajax({
-                type: "post",
-                url: "iotext.php",
-                dataType: 'json',
-                data: "content=" + uploadData,
-                success: function () {
+        $.ajax({
+            type: "post",
+            url: "iotext.php",
+            dataType: 'json',
+            data: "content=" + uploadData,
+            success: function () {
 
-                }
-
-            })
-            alert("Ok");
-            window.location.reload();
-        });
-
-
-        $("#exampleModal .inputgroup input").keyup(function (e) {
-            if (parseInt(this.value) > 255) {
-                alert("The number is not greater than 255")
-                this.value = 0;
-                return;
             }
-            this.value = parseInt(this.value);
-        });
-        $("#bacnetconfig").click(function () {
-            showXml("bac_config.xml", function (result) {
-                var xml = $($.parseXML(result));
-                $("#DeviceName").val(xml.find("root name").text());
-                 $("#NetNumber").val(xml.find("root net").text());
-                $("#Max_master").val(xml.find("root max_master").text());
-                 $("#Max_frame").val(xml.find("root max_frame").text());
-                $("#BacnetType").val(xml.find("root type").text());
-                $("#DevicePort").val(xml.find("root rport").text());
-                $("#saveBACnetConfig").click(function () {
-                           xml.find("root name").text($("#DeviceName").val());
-                            xml.find("root net").text( $("#NetNumber").val());
-                    xml.find("root max_master").text($("#Max_master").val());
-                     xml.find("root max_frame").text($("#Max_frame").val());
-                           xml.find("root type").text($("#BacnetType").val());
-                          xml.find("root rport").text($("#DevicePort").val());
-                    saveXml("bac_config.xml",
-                       function(){alert("ok")},
+
+        })
+        alert("Ok");
+        window.location.reload();
+    });
+
+
+    $("#exampleModal .inputgroup input").keyup(function (e) {
+        if (parseInt(this.value) > 255) {
+            alert("The number is not greater than 255")
+            this.value = 0;
+            return;
+        }
+        this.value = parseInt(this.value);
+    });
+    $("#bacnetconfig").click(function () {
+        showXml("bac_config.xml", function (result) {
+            var xml = $($.parseXML(result));
+            $("#DeviceName").val(xml.find("root name").text());
+            $("#NetNumber").val(xml.find("root net").text());
+            $("#Max_master").val(xml.find("root max_master").text());
+            $("#Max_frame").val(xml.find("root max_frame").text());
+            $("#BacnetType").val(xml.find("root type").text());
+            $("#DevicePort").val(xml.find("root rport").text());
+            $("#saveBACnetConfig").click(function () {
+                xml.find("root name").text($("#DeviceName").val());
+                xml.find("root net").text($("#NetNumber").val());
+                xml.find("root max_master").text($("#Max_master").val());
+                xml.find("root max_frame").text($("#Max_frame").val());
+                xml.find("root type").text($("#BacnetType").val());
+                xml.find("root rport").text($("#DevicePort").val());
+                saveXml("bac_config.xml",
+                    function () {
+                        alert("ok")
+                    },
                     xmlToStr(xml[0])
-                    );
-                });
+                );
             });
-
         });
 
+    });
 
-    })();
+
+    })
+    ();
 
 </script>
 </html>
