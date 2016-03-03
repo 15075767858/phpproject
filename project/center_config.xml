@@ -1,12 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
 <root aaa="111">
-	<serial bbb="222">
-		<max_master>127</max_master>
-		<parity>0</parity>
-		<databits>8</databits>
-		<stopbits>1</stopbits>
-		<address>0</address>
-		<max_send_frame>20</max_send_frame>
-		<baud_rate>38400</baud_rate>
-	</serial>
+	<asd>sda</asd>
 </root>

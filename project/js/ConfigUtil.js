@@ -88,61 +88,22 @@ function isIE() { //ie?
         return false;
 }
 
-function xmlToJson(xml) {
-    // Create the return object
-    var obj = {};
-    if (xml.nodeType == 1) { // element
-        // do attributes
-        if (xml.attributes.length > 0) {
-            obj["@attributes"] = {};
-            for (var j = 0; j < xml.attributes.length; j++) {
-                var attribute = xml.attributes.item(j);
-                obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
-            }
-        }
-    } else if (xml.nodeType == 3) { // text
-        obj = xml.nodeValue;
-    }
-    // do children
-    if (xml.hasChildNodes()) {
-        for (var i = 0; i < xml.childNodes.length; i++) {
-            var item = xml.childNodes.item(i);
-            var nodeName = item.nodeName;
-            if (typeof(obj[nodeName]) == "undefined") {
-                obj[nodeName] = xmlToJson(item);
-            } else {
-                if (typeof(obj[nodeName].length) == "undefined") {
-                    var old = obj[nodeName];
-                    obj[nodeName] = [];
-                    obj[nodeName].push(old);
-                }
-                obj[nodeName].push(xmlToJson(item));
-            }
-        }
-    }
-    return obj;
-};
 
-//思路：函数接收到一个XML DOM对象
-//如果节点类型=1 获得它的节点名称
-//获取它的属性如果数量大于0 就把它存入json
-//子节点数量 如果子节点数量等于0 就建一个数组 对这个子元素进行递归 保存这个子节点下所有的子节点
-//
-//console.log(XmlDom.childNodes[0].attributes['abc'].value)
-//
 
 function XmlToFrameJson(XmlDom) {
     var jsonobj = {};
     if (XmlDom.nodeType != 1) {
-
-        //jsonobj['name'] = XmlDom.childNodes[0].tagName;
-        //XmlToFrameJson(XmlDom.childNodes[0])
+console.log(XmlDom.nodeType);
     }
     var oNewChildNode = [];
     for (var i = 0; i < XmlDom.childNodes.length; i++) {
         jsonobj['name'] = XmlDom.tagName;
+        if(XmlDom.childNodes.length==1){
+         jsonobj["value"] =XmlDom.innerHTML;
+         }
         if (XmlDom.childNodes[i].nodeType == 1) {
             var childNode = XmlDom.childNodes[i];
+
             oNewChildNode.push(XmlDom.childNodes[i]);
 
             var attrs = XmlDom.attributes;
@@ -156,13 +117,21 @@ function XmlToFrameJson(XmlDom) {
             }
             //console.log(childNode.childNodes);
             // var aType1 = childNode.childNodes;
+
             if (oNewChildNode.length > 0) {
+
                 jsonobj["children"] = [];
                 for (var j = 0; j < oNewChildNode.length; j++) {
-                        jsonobj["children"].push(XmlToFrameJson(oNewChildNode[j]));
+
+                    jsonobj["children"].push(XmlToFrameJson(oNewChildNode[j]));
                 }
             }
         }
+        //console.log(XmlDom.childNodes[i])
+         /*if(XmlDom.childNodes[i].nodeType == 3){
+            console.log(XmlDom.childNodes[i].nodeName)
+                console.log(XmlDom.childNodes[i])
+        }*/
     }
     return jsonobj;
 }
