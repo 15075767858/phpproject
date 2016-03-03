@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>center_config.xml</title>
+</head>
+<link href="css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+    body {
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    .node circle {
+        stroke-width: 1.5px;
+    }
+
+    .node {
+        font: 12px sans-serif;
+    }
+
+    .node text {
+        font-family: 微软雅黑;
+
+        font-size: 20px;
+    }
+
+    .link {
+        fill: none;
+        stroke: #ccc;
+        stroke-width: 2px;;
+    }
+
+
+</style>
+<body>
+<input type="button" class="btn btn-block btn-info" id="bt1" value="modbus_config.xml"/>
+<input type="button" class="btn btn-block btn-info" id="bt2" value="center_config.xml"/>
+<input type="range" id="changeSize" max="1800" min="600" value="800"/>
+
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Change Node</h4>
+            </div>
+            <div class="modal-body">
+
+                <!--  <input type="button" class="btn btn-danger" value="delete this node" id="deleteBtn"/>
+                  <input type="button" class="btn btn-info" value="add a new children node" id="addBtn"/>-->
+
+                <ul class="list-group">
+
+                    <li class="alert alert-danger">
+                        <input type="radio" value="delete" checked="true" id="deleteRadio" name="changenode">
+                        Delete this node
+                    </li>
+                    <li class="alert alert-info">
+                        <input type="radio" value="add" id="addRadio" name="changenode">
+                        Create a new children node
+                    </li>
+                </ul>
+
+
+                <form class="navbar-form navbar-left hide" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Plase input node name">
+                    </div>
+                    <button type="button" id="addAttrBtn" class="btn btn-primary">Add a attribute</button>
+
+                    <table class="table hide">
+                        <thead>
+                        <tr>
+                            <td>Attribute Name</td>
+                            <td>Attribute Value</td>
+                            <td>Delete This Attribute</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+
+                    </table>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/ConfigUtil.js"></script>
+<script src="js/d3.js"></script>
+<script>
+    (function () {
+        var globlXml;
+        $("#changeSize").on("change",function(){
+           console.log(this.value);
+            if (document.getElementsByTagName("svg")[0])
+                document.querySelector("body").removeChild(document.getElementsByTagName("svg")[0]);
+            generateSVG(globlXml,this.value);
+        });
+        document.getElementById("bt1").onclick = function () {
+            if (document.getElementsByTagName("svg")[0])
+                document.querySelector("body").removeChild(document.getElementsByTagName("svg")[0]);
+            globlXml="modbus_config.xml";
+            generateSVG("modbus_config.xml")
+        }
+        document.getElementById("bt2").onclick = function () {
+            if (document.getElementsByTagName("svg")[0])
+                document.querySelector("body").removeChild(document.getElementsByTagName("svg")[0]);
+            globlXml="center_config.xml";
+            generateSVG("center_config.xml")
+        }
+        function generateSVG(fileName, size) {
+            var width = height = size||1000;
+
+            var tree = d3.layout.tree()
+                    .size([width, height - 400])
+                    .separation(function (a, b) {
+                        return (a.parent == b.parent ? 1 : 2);
+                    });
+
+            var diagonal = d3.svg.diagonal()
+                    .projection(function (d) {
+                        return [d.y, d.x];
+                    });
+
+            var svg = d3.select("body").append("svg")
+                    .attr("width", width)
+                    .attr("height", height)
+                    .append("g")
+                    .attr("transform", "translate(90,0)");
+
+            d3.xml(fileName, function (error, root) {
+                if (error != null) {
+                    alert("Error :  Not found file  \"" + fileName + "\"");
+                }
+                console.log(root)
+                root = XmlToFrameJson(root.childNodes[0]);
+
+                var nodes = tree.nodes(root);
+                var links = tree.links(nodes);
+
+                //console.log(nodes);
+                //console.log(links);
+
+                var link = svg.selectAll(".link")
+                        .data(links)
+                        .enter()
+                        .append("path")
+                        .attr("class", "link")
+                        .attr("d", diagonal);
+
+                var node = svg.selectAll(".node")
+                        .data(nodes)
+                        .enter()
+                        .append("g")
+                        .attr("class", "node")
+                        .attr("transform", function (d) {
+                            return "translate(" + d.y + "," + d.x + ")";
+                        });
+
+                node.on("mouseover", function (a, b) {
+                    $(function () {
+                        $('.tooltip-test').tooltip('show');
+                    });
+                });
+                var oAttrJson = {};
+                node.append("circle")
+                        .attr("fill", "white")
+                        .attr("stroke", function (d) {
+                            return d.children == null ? "red" : "green";
+                        }).attr("r", 4.5);
+                var text = node.append("text")
+                        .attr("dx", function (d) {
+                            return d.children ? -8 : 8;
+                        })
+                        .attr("dy", 3)
+                        .style("text-anchor", function (d) {
+                            return d.children ? "end" : "start";
+                        })
+                        .text(function (d) {
+                            return d.name
+                        });
+                text.append("tspan")
+                        .attr("dy", function (d) {
+                            return 18;
+                        })
+                        .attr("dx", function (d) {
+                            return -(d.name.length * 10);
+                        })
+                        .text(function (d) {
+                            var sAttrs="";
+                            for (od in d) {
+                                if (od!='name'&&od != 'depth' && od != 'parent' && od != 'x' && od != 'y' && od != 'children') {
+                                    //oAttrJson[od] = d[od];
+                                    sAttrs+=od + ":" + d[od]+"  ";
+                                }
+                            }
+                            return sAttrs;
+                        });
+
+                function nodeClick(d) {
+                    if (d.children) {
+                        d._children = d.children;
+                        d.children = null;
+                    }
+                    else {
+                        d.children = d._children;
+                        d._children = null;
+                    }
+                    update(d);
+                }
+
+                node.on("click", showMenu);
+
+                node.on("contextmenu", showMenu);
+                var globalIndex;
+
+                function showMenu(data, index) {
+                    //deleteXmlNodeByIndex(root,3);//删除节点
+                    //var aaa=document.createElement("aaa");console.log(addXmlNodeByIndex(root,0,aaa));//增加节点
+                    d3.event.preventDefault();
+                    //需要知道节点的属性
+                    globalIndex = index;
+                    $('#myModal1').modal('show')
+                    console.log(data);
+                    //console.log(index);
+
+                }
+
+                $("#addRadio").on("click", function () {
+                    $("#myModal1 form").removeClass("hide");
+                })
+                $("#deleteRadio").on("click", function () {
+                    $("#myModal1 form").addClass("hide")
+                    $("#myModal1 table").addClass("hide")
+                })
+                $("#addAttrBtn").on("click", function () {
+                    $("#myModal1 table").removeClass("hide");
+                    $("#myModal1 table tbody").append($('<tr>\
+                            <td><input class="form-control" placeholder="name"  type="text"></td>\
+                            <td><input class="form-control" placeholder="value" type="text"></td>\
+                            <td><input class="btn btn-warning" type="button" value="delete" ></td>\
+                            </tr>'));
+                    $("#myModal1 table tbody input[type=button]").on("click", function () {
+                        var oTr = $(this).parents("tr").remove();
+                        if (!$("#myModal1 table tbody tr").length) {
+                            $("#myModal1 table").addClass("hide");
+                        }
+                    })
+
+
+                });
+
+
+            });
+
+        }
+
+    })()
+</script>
+</html>
+
+
+<!--
+/*var oDiv=document.createElement("div");
+oDiv.style.backgroundColor="red";
+oDiv.style.height="100px";
+oDiv.style.width="100px";
+oDiv.style.position="absolute";
+oDiv.style.left=data.y+"px";
+oDiv.style.top=data.x+"px";
+document.body.appendChild(oDiv);
+*/-->
