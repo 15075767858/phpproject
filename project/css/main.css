@@ -16,13 +16,17 @@
 	    margin: 0 2%;
 	    float: left;
 	}
-	
-	.inputgroup input {
+
+	#exampleModal .inputgroup input {
 	    width: 100%;
 	    text-align: right;
 	    height: 24px;
 	}
-	
+	#BACCon  .inputgroup input {
+		width: 100%;
+		text-align: left;
+		height: 24px;
+	}
 	.modal-header {
 	    background-color: rgb(230, 230, 255);
 	}

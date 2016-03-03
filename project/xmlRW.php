@@ -1,15 +1,18 @@
 <?php  
 $fn=$_POST['fileName'];
 $rw=$_POST['rw'];
-$fp = fopen($fn, $rw); 
+
 if($rw=='r'){
-while(! feof($fp)) 
+    $fp = fopen($fn, 'r');
+    while(! feof($fp))
 { 
 echo fgets($fp); 
 } 
 }else{
 $content=$_POST["content"];
-fwrite($fp, $content);
+    echo "aaaaaaaaaa";
+    $fp = fopen($fn, 'w') or die("Unable to open file!");
+    fwrite($fp, $content);
 fclose($fp);
 }
 ?>

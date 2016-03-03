@@ -2,4 +2,10 @@
 <root>
 	<driver feed_dog="1" name="bac-mrouter"/>
 	<driver feed_dog="1" name="bip-client"/>
+
+	<driver feed_dog="1" name="bac-client"/>
+	<driver feed_dog="1" name="bac-server"/>
+	<driver feed_dog="1" name="bac-logic"/>
+	<driver feed_dog="1" name="bac-global"/>
+	<driver feed_dog="1" name="modbus"/>
 	</root>

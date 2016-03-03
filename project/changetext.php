@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +31,7 @@ while(! feof($fp))
 echo fgets($fp); 
 } 
 	echo "</div>";
-fclose($fp); 
+fclose($fp);
 ?> 
 
 

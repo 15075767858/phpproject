@@ -130,7 +130,7 @@
         <!-- Default panel contents -->
         <div class="panel-heading">driver config</div>
         <div class="panel-body configcontent">
-            <div class="row3">
+            <div class="row3 ">
                 <div>
                     <input type="radio" checked data-name="modbus" name="BACnet" id="conRadio1">
                     <span>BACnet IP</span>
@@ -153,7 +153,7 @@
                        value="Modbus Config">
             </div>
             <div style="clear:both;"></div>
-            <div class="row3">
+            <div class="row3 ccrow1">
                 <div>
                     <input type="radio" data-name="global" name="BACnet" id="conRadio2">
                     <span>BACnet Router</span>
@@ -249,6 +249,7 @@
 
 
 <script src="js/jquery.min.js"></script>
+<script src="js/ConfigUtil.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/selectivizr.js"></script>
 <script type="text/javascript">
@@ -257,30 +258,26 @@
 
     (function () {
         $("#modbuscommit").on("click",function(){
-            alert("a");
+            var fileName=$("#xmlpan .panel-heading").text();
+            var content=$(".modal-body textarea[data-id=modbus]").val();
+            saveXml(fileName,function(){alert("ok")},content);
+            showXml(fileName,function(res){
+                $("#xmlpan .panel-heading").html(fileName);
+                $("#xmlpan .panel-body *").text(res);
+            });
         });
        $("#globalcommit").on("click",function(){
-           alert("b");
-        });
+           var fileName=$("#xmlpan .panel-heading").text();
+           var content=$(".modal-body textarea[data-id=global]").val();
+           saveXml(fileName,function(){alert("ok")},content);
+           showXml(fileName,function(res){
+               $("#xmlpan .panel-heading").html(fileName);
+               $("#xmlpan .panel-body *").text(res);
+           });
+       });
 
         //modbuscommit
-        function showXml(fileName,success) {
-            $.ajax({
-                type: "POST",
-                url: "xmlRW.php",
-                data: "fileName=" + fileName + "&rw=r",
-                success: success
-            });
-        }
 
-        function saveXml(fileName,success,content){
-            $.ajax({
-                type: "POST",
-                url: "xmlRW.php",
-                data: "fileName="+fileName+"&content=" + content + "&rw=w",
-                success: success
-            });
-        }
         showXml("modbus.xml",function(res){
             $("#xmlpan .panel-heading").html("modbus.xml");
             $("#xmlpan .panel-body *").text(res);
@@ -339,7 +336,6 @@
                         }//循环结束没找到
                         if(ad=="Add"){
                             oXML.find("root").append(oDri+"\n");
-                            alert(fileName)
                             saveXml(fileName,function(reslt){
                                 alert("ok")},xmlToStr(oXML[0]));
                             showXml(fileName,function(res){
@@ -418,6 +414,11 @@
             }
             $(".modal-body textarea[data-id=global]").val(xmlToStr(xml[0]));
         });
+        $(".configcontent .ccrow1 input[type!=radio]").attr("disabled", "disabled");
+        $(".configcontent input:radio[name=BACnet]").on("change", function() {
+            $(".configcontent input:checkbox,input:button").attr("disabled", "disabled");
+            $(this).parents(".row3").find("input:checkbox,input:button").attr("disabled", null);
+        })
     })();
     /* $.ajax({
      type: "POST",
@@ -471,50 +472,13 @@
      break;
      }
      });*/
-    loadXML = function (xmlString) {
-        var xmlDoc = null;
-        if (!window.DOMParser && window.ActiveXObject) {
-            var xmlDomVersions = ['MSXML.2.DOMDocument.6.0', 'MSXML.2.DOMDocument.3.0', 'Microsoft.XMLDOM'];
-            for (var i = 0; i < xmlDomVersions.length; i++) {
-                try {
-                    xmlDoc = new ActiveXObject(xmlDomVersions[i]);
-                    xmlDoc.async = false;
-                    xmlDoc.loadXML(xmlString);
-                } catch (e) {
-                }
-            }
-        } else if (window.DOMParser && document.implementation && document.implementation.createDocument) {
-            try {
-                domParser = new DOMParser();
-                xmlDoc = domParser.parseFromString(xmlString, 'text/xml');
-            } catch (e) {
-            }
-        } else {
-            return null;
-        }
 
-        return xmlDoc;
-    }
-    xmlToStr = function (xmlDom) {
-        if (isIE()) {
-            alert("Exception:no support IE browser,plase change borwser!");
-            return xmlDom.xml;
-        } else {
-            //alert(new XMLSerializer().serializeToString(xmlDom));
-            return new XMLSerializer().serializeToString(xmlDom);
-        }
-    }
     window.onload=function(){
 if(isIE()){
     alert("Exception:no support IE browser,plase change borwser!");
 }
     }
-    function isIE() { //ie?
-        if (!!window.ActiveXObject || "ActiveXObject" in window)
-            return true;
-        else
-            return false;
-    }
+
 </script>
 
 </html>
