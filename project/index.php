@@ -215,7 +215,7 @@
 
 
         <?php
-        $fp = fopen("mnt/nandfalsh/userinfo.txt", "r");
+        $fp = fopen("../../userinfo.txt", "r");
         echo "<div id='data' style='display:none'>";
         while (!feof($fp)) {
             echo fgets($fp);

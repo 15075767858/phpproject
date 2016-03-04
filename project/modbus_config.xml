@@ -1,5 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><root>
-	
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<root>
+	<serial>
+		<serial_number>3</serial_number>		<!-- serial_number 为串口号 -->
+		<parity>2</parity>						<!-- parity 为串口的奇偶位 -->
+		<databits>8</databits>					<!-- databits 为串口的数据位 -->
+		<stopbits>1</stopbits>					<!-- stopbits 为串口的停止位 -->
+		<baud_rate>19200</baud_rate>			<!-- baud_rate 为串口的波特率 -->
+	</serial>
 
 	<module number="1">							<!-- number 为模块的地址 -->
 		<point type="1" address="1">			<!-- type 为点的类型，
