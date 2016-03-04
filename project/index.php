@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/main.css">
     <!-- TemplateParam name="class" type="URL" value="file:///F|/EM9460www/div-b" -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=11"/>
     <title>BACnet Router&Control</title>
     <style type="text/css">
         .main {
