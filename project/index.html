@@ -359,29 +359,26 @@
 <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
 <script src="http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-<div id='data'>
+<div id='data' class="hide">
 
 </div>
 
 <script src="js/ConfigUtil.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script>
-    alert("aa")
-    $.ajax({
-        type: "post",
-        url: "iotext.php",
-        dataType: 'html',
-        data: "r=r",
-        success: function (res){
-            alert(res);
-        }
-    })
-    alert("bb")
-</script><!--
+
 <script type="text/javascript">
     (function () {
-
+        $.ajax({
+            type: "post",
+            url: "iotext.php",
+            dataType: 'html',
+            data: "r=r",
+            async: false,
+            success: function (res){
+                $("#data").text(res);
+            }
+        })
         $("#datetime").on("click", function () {
             var oDate = new Date(); //实例一个时间对象；
             var year = oDate.getFullYear();   //获取系统的年；
@@ -419,23 +416,11 @@
                     }
                 });
                 window.location.reload();
-
-
-            }
-
-        })
-
-        var jDate="";
-        $.ajax({
-            type: "get",
-            url: "iotext.php",
-            dataType: 'json',
-            data: "r=r",
-            success: function (res){
-        alert(res);
-                    jDate=res;
             }
         })
+
+
+        var jDate = parseINIString(document.getElementById("data").innerHTML);
         var DHCP = jDate["[LOCAL_MACHINE"].DHCP.replace(/\"/g, " ").split(".");
         var DefaultGateway = jDate["[LOCAL_MACHINE"].DefaultGateway.replace(/\"/g, " ").split(".");
         var IPAddress = jDate["[LOCAL_MACHINE"].IPAddress.replace(/\"/g, " ").split(".");
@@ -527,5 +512,5 @@
     })
     ();
 
-</script>-->
+</script>
 </html>
