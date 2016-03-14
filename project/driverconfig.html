@@ -101,7 +101,7 @@
         }
 
         input[type=radio]:checked {
-            background: red;
+            /* background: red;*/
         }
 
         #xmlpan {
@@ -175,7 +175,7 @@
                 <div style="clear:both;"></div>
             </div>
             <div style="clear:both;"></div>
-            <div class="row2"  id="addRadio">
+            <div class="row2" id="addRadio">
                 <div class="d1">
                     <input type="radio" checked value="Add" name="AD">
                     <span>Add</span>
@@ -255,30 +255,36 @@
 <script type="text/javascript">
     //modbus
 
+    //setTimeout(aa(),500);
+
 
     (function () {
-        $("#modbuscommit").on("click",function(){
-            var fileName=$("#xmlpan .panel-heading").text();
-            var content=$(".modal-body textarea[data-id=modbus]").val();
-            saveXml(fileName,function(){alert("ok")},content);
-            showXml(fileName,function(res){
+        $("#modbuscommit").on("click", function () {
+            var fileName = $("#xmlpan .panel-heading").text();
+            var content = $(".modal-body textarea[data-id=modbus]").val();
+            saveXml(fileName, function () {
+                alert("ok")
+            }, content);
+            showXml(fileName, function (res) {
                 $("#xmlpan .panel-heading").html(fileName);
                 $("#xmlpan .panel-body *").text(res);
             });
         });
-       $("#globalcommit").on("click",function(){
-           var fileName=$("#xmlpan .panel-heading").text();
-           var content=$(".modal-body textarea[data-id=global]").val();
-           saveXml(fileName,function(){alert("ok")},content);
-           showXml(fileName,function(res){
-               $("#xmlpan .panel-heading").html(fileName);
-               $("#xmlpan .panel-body *").text(res);
-           });
-       });
+        $("#globalcommit").on("click", function () {
+            var fileName = $("#xmlpan .panel-heading").text();
+            var content = $(".modal-body textarea[data-id=global]").val();
+            saveXml(fileName, function () {
+                alert("ok")
+            }, content);
+            showXml(fileName, function (res) {
+                $("#xmlpan .panel-heading").html(fileName);
+                $("#xmlpan .panel-body *").text(res);
+            });
+        });
 
         //modbuscommit
 
-        showXml("modbus.xml",function(res){
+        showXml("modbus.xml", function (res) {
             $("#xmlpan .panel-heading").html("modbus.xml");
             $("#xmlpan .panel-body *").text(res);
         });
@@ -291,73 +297,87 @@
                 url: "xmlRW.php",
                 data: "fileName=guard.xml&rw=r",
                 success: function (result) {
-                  var  gxml = $($.parseXML(result));
-
+                    var gxml = $($.parseXML(result));
                     ajd = gxml.find("root *");
                     for (var i = 0; i < ajd.length; i++) {
                         var opt = $("<option value=" + i + "></option>");
-                        opt.text(ajd[i].outerHTML);
+                        if (isIE()) {
+                            opt.text(NodeToStr(ajd[i]))
+                        } else {
+                            opt.text(ajd[i].outerHTML);
+                        }
                         $(".d3 select").append(opt);
                     }
                 }
             });
+
             $("#ok").on("click", function () {
                 var seval = $(this).siblings("select").val();
-                if(seval){
-                    var fileName=$("#xmlpan .panel-heading").text();
-                    var fileContent=$("#xmlpan .panel-body").text();
-                    showXml(fileName,function(res){
-                        var oDri=$(ajd[seval])[0].outerHTML;
-                        console.log(oDri)
-                        var oXML=$($.parseXML(res));
-                        var aDri=oXML .find("root *");
-                        var ad=$("#addRadio input:radio[name=AD]:checked").val();
-                        for(var i=0;i<aDri.length;i++){
-                            if(aDri[i].outerHTML==oDri) { //如果找到了相同的
-                            if(ad=="Add"){
-                                alert("Exception:This file node repetition")
-                                //$($.parseXML(res)).find("root").append(oDri);
-                                return;
-                            }else if(ad=="Delete"){
-                                aDri[i].parentNode.removeChild(aDri[i]);
-                                console.log(xmlToStr(oXML[0]));
-                                saveXml(fileName,function(){
-                                    alert("ok")},xmlToStr(oXML[0]));
-                                showXml(fileName,function(res){
-                                    $("#xmlpan .panel-heading").html("modbus.xml");
-                                    $("#xmlpan .panel-body *").text(res);
-                                });
-                                return;
-                            }else{
-                                return;
-                            }
+                if (seval) {
+                    var fileName = $("#xmlpan .panel-heading").text();
+                    var fileContent = $("#xmlpan .panel-body").text();
+                    showXml(fileName, function (res) {
+                        var oDri = $(ajd[seval])[0].outerHTML || NodeToStr($(ajd[seval])[0]);
+
+                        var oXML = $($.parseXML(res));
+                        var aDri = oXML.find("root *");
+                        var ad = $("#addRadio input:radio[name=AD]:checked").val();
+                        for (var i = 0; i < aDri.length; i++) {
+                            //console.log($(aDri[i].outerHTML||NodeToStr(aDri[i])));
+                            // console.log($(oDri))
+                            console.log($(aDri[i].outerHTML || NodeToStr(aDri[i]))[0].outerHTML + "  " + $(oDri)[0].outerHTML);
+                            console.log($(aDri[i].outerHTML || NodeToStr(aDri[i]))[0].outerHTML == $(oDri)[0].outerHTML);
+                            if ($(aDri[i].outerHTML || NodeToStr(aDri[i]))[0].outerHTML == $(oDri)[0].outerHTML) { //如果找到了相同的
+                                if (ad == "Add") {
+                                    alert("Exception:This file node repetition")
+                                    //$($.parseXML(res)).find("root").append(oDri);
+                                    return;
+                                } else if (ad == "Delete") {
+                                    aDri[i].parentNode.removeChild(aDri[i]);
+                                    //console.log(aDri)
+                                    console.log(oXML)
+                                    alert(serializeXml(oXML[0]));
+                                    saveXml(fileName, function () {
+                                        alert("ok")
+                                    }, serializeXml(oXML[0]));
+                                    showXml(fileName, function (res) {
+                                        $("#xmlpan .panel-heading").html(fileName);
+                                        $("#xmlpan .panel-body *").text(res);
+                                    });
+                                    return;
+                                } else {
+                                    return;
+                                }
                             }
 
                         }//循环结束没找到
-                        if(ad=="Add"){
-                            oXML.find("root").append(oDri+"\n");
-                            saveXml(fileName,function(reslt){
-                                alert("ok")},xmlToStr(oXML[0]));
-                            showXml(fileName,function(res){
-                                $("#xmlpan .panel-heading").html("modbus.xml");
+                        if (ad == "Add") {
+                            var content = $("#xmlpan .panel-body *").text();
+                            content = content.substring(0, content.indexOf("</root>"));
+                            content += oDri + "\n" + "</root>";
+                            saveXml(fileName, function (reslt) {
+                                alert("ok")
+                            }, content);
+                            showXml(fileName, function (res) {
+                                $("#xmlpan .panel-heading").html(fileName);
                                 $("#xmlpan .panel-body *").text(res);
                             });
                             return;
-                        }else if(ad=="Delete") {
+                        } else if (ad == "Delete") {
                             alert("Exception:This file not found this node")
                             return;
-                        }else{
+                        } else {
                             return;
                         }
 
                         //{
-                          // console.log($($.parseXML(res)).find(seval));
+                        // console.log($($.parseXML(res)).find(seval));
                         //}
                         $("#xmlpan .panel-heading").html("modbus.xml");
                         $("#xmlpan .panel-body *").text(res);
                     });
-                    console.log(fileName+fileContent);
-                }else{
+                    console.log(fileName + fileContent);
+                } else {
                     alert("Exception: Please select a value")
                 }
 
@@ -366,14 +386,14 @@
         })();
 
         $("#conRadio1").on("click", function () {
-            showXml("modbus.xml",function(res){
+            showXml("modbus.xml", function (res) {
                 $("#xmlpan .panel-heading").html("modbus.xml");
                 $("#xmlpan .panel-body *").text(res);
             });
 
         });
         $("#conRadio2").on("click", function () {
-            showXml("global.xml",function(res){
+            showXml("global.xml", function (res) {
                 $("#xmlpan .panel-heading").html("global.xml");
                 $("#xmlpan .panel-body *").text(res);
             });
@@ -381,102 +401,53 @@
         });
 
         $("#modCon").on("click", function () {
-            var xml = $($.parseXML('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><root></root>'));
-            xml = $(loadXML('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><root></root>'));
+            var xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' + '\n' + '<root>';
             if ($("#concheck1")[0].checked) {
-                xml.find("root").append('\n' + '<driver feed_dog="1" name="bac-server"/>' + '\n');
+                xml += '\n' + '<driver feed_dog="1" name="bac-server"/>';
             }
             if ($("#concheck2")[0].checked) {
-                xml.find("root").append('\n' + '<driver feed_dog="1" name="bac-client"/>' + '\n');
-                xml.find("root").append('\n' + '<driver feed_dog="1" name="bac-logic"/>' + '\n');
+                xml += '\n' + '<driver feed_dog="1" name="bac-client"/>';
+                xml += '\n' + '<driver feed_dog="1" name="bac-logic"/>';
             }
             if ($("#concheck3")[0].checked) {
-                xml.find("root").append('\n' + '<driver feed_dog="1" name="bac-global"/>' + '\n');
+                xml += '\n' + '<driver feed_dog="1" name="bac-global"/>';
             }
             if ($("#concheck4")[0].checked) {
-                xml.find("root").append('\n' + '<driver feed_dog="1" name="bac-modbus"/>' + '\n');
+                xml += '\n' + '<driver feed_dog="1" name="bac-modbus"/>';
             }
-            $(".modal-body textarea[data-id=modbus]").val(xmlToStr(xml[0]));
+            ;
+            xml += '\n' + '</root>';
+            $(".modal-body textarea[data-id=modbus]").val(xml);
         });
 
         $("#gloCon").on("click", function () {
-            var xml = $($.parseXML('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><root></root>'));
+            var xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' + '\n' + '<root>';
             //xml = $(loadXML('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><root></root>'));
             if ($("#concheck5")[0].checked) {
-                xml.find("root").append('\n' + '<driver feed_dog="1" name="bac-server"/>' + '\n');
+                xml += '\n' + '<driver feed_dog="1" name="bac-server"/>';
             }
             if ($("#concheck6")[0].checked) {
-                xml.find("root").append('\n' + '<driver feed_dog="1" name="bac-client"/>' + '\n');
-                xml.find("root").append('\n' + '<driver feed_dog="1" name="bac-logic"/>' + '\n');
+                xml += '\n' + '<driver feed_dog="1" name="bac-client"/>';
+                xml += '\n' + '<driver feed_dog="1" name="bac-logic"/>';
             }
             if ($("#concheck7")[0].checked) {
-                xml.find("root").append('\n' + '<driver feed_dog="1" name="bac-global"/>' + '\n');
+                xml += '\n' + '<driver feed_dog="1" name="bac-global"/>';
             }
-            $(".modal-body textarea[data-id=global]").val(xmlToStr(xml[0]));
+            xml += '\n' + '</root>';
+            $(".modal-body textarea[data-id=global]").val(xml);
         });
         $(".configcontent .ccrow1 input[type!=radio]").attr("disabled", "disabled");
-        $(".configcontent input:radio[name=BACnet]").on("change", function() {
+        $(".configcontent input:radio[name=BACnet]").on("change", function () {
             $(".configcontent input:checkbox,input:button").attr("disabled", "disabled");
             $(this).parents(".row3").find("input:checkbox,input:button").attr("disabled", null);
         })
     })();
-    /* $.ajax({
-     type: "POST",
-     url: "xmlRW.php",
-     data: "fileName=global.xml&rw=r",
-     success: function(result) {
-     //globalMod==loadXML(result);
-     xmlDoc = $.parseXML(result);
-     globalMod = $(xmlDoc);
-     //var xmlDom=loadXML(result);
-     //$("textarea[data-id=global]").val(xmlToStr(xmlDom));
-     $("textarea[data-id=global]").val(result);
-     }
-     }); * /
-
-     //$(this).parents(".row3").find("input:checkbox,input:button").attr("checked","checked");
-
-     $(".configcontent input:checkbox,input:button").attr("disabled", "disabled");
-     $(".configcontent input:radio[name=BACnet]").on("change", function() {
-     $(".configcontent input:checkbox,input:button").attr("disabled", "disabled");
-     $(this).parents(".row3").find("input:checkbox,input:button").attr("disabled", null);
-     //var xname=$(this).data("name");
-     //$(this).parents(".row3").find("input:checkbox").on("change",function(){
-     //    $(".modal-body textarea[data-id="+xname+"]").val("adfasdfasdfasdfa");
-     /*var xmlDoc = $.parseXML($("textarea[data-id="+xname+"]").val());
-     $xml = $(xmlDoc);
-     driver=$xml.find("driver");
-     for (var i = 0; i < driver.length; i++) {
-     $(this).parents(".row3").find("input:checkbox[data-name="+$(driver[i]).attr("name");+"]").attr("checked","checked");
-     }*/
 
 
-
-
-    /*$(".configcontent input:checkbox").on("change",function(){
-     var iId=$(this).data("id");
-     switch(iId)
-     {
-     case 1:
-     var xml = $($.parseXML($(".modal-body textarea[data-id=modbus]").val()));
-     if($(this).context.checked){
-     $(xml).find("root").append('<driver feed_dog="1" name="bac-client"/>'+'\r\t');
-
-     $(".modal-body textarea[data-id=modbus]").val(xmlToStr(xml[0]));
-
-     }else{
-     //$(xml).remove($(xml).find("driver[name=bac-client]"));
-     $(xml).remove($('<driver feed_dog="1" name="bac-client"/>'));
-     $(".modal-body textarea[data-id=modbus]").val(xmlToStr(xml[0]));
-     }
-     break;
-     }
-     });*/
-
-    window.onload=function(){
-/*if(isIE()){
-    alert("Exception:no support IE browser,plase change borwser!");
-}*/
+    window.onload = function () {
+        /*if(isIE()){
+         alert("Exception:no support IE browser,plase change borwser!");
+         }*/
     }
 
 </script>

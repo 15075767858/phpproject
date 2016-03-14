@@ -1,6 +1,6 @@
 <?php
-        $fp = fopen("../../userinfo.txt", "r");
-        echo "<div id='data' style='display:none'>";
+        $fp = fopen("../../bac_config.txt", "r");
+        echo "<div id='data'>";
         while (!feof($fp)) {
             echo fgets($fp);
         }

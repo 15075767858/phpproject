@@ -207,151 +207,148 @@
         <p>&nbsp;</p>
 
 
+        <!-- Modal -->
+        <div class="modal fade" id="BACCon" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">BACnet Config</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">DeviceName</label>
+                            <ul class="inputgroup">
+                                <input type="text" id="DeviceName">
 
+                                <div style="clear:both"></div>
+                            </ul>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">NetNumber</label>
+                            <ul class="inputgroup">
+                                <input type="text" id="NetNumber">
 
+                                <div style="clear:both"></div>
+                            </ul>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">Max_master</label>
+                            <ul class="inputgroup">
+                                <input type="text" id="Max_master">
 
-    <!-- Modal -->
-    <div class="modal fade" id="BACCon" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">BACnet Config</h4>
+                                <div style="clear:both"></div>
+                            </ul>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">Max_frame</label>
+                            <ul class="inputgroup">
+                                <input type="text" id="Max_frame">
+
+                                <div style="clear:both"></div>
+                            </ul>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">BacnetType</label>
+                            <ul class="inputgroup">
+                                <select id="BacnetType">
+                                    <option value="0">BACnet IP</option>
+                                    <option value="1">MS/TP</option>
+                                </select>
+
+                                <div style="clear:both"></div>
+                            </ul>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">DevicePort</label>
+                            <ul class="inputgroup">
+                                <input type="text" id="DevicePort">
+
+                                <div style="clear:both"></div>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" id="saveBACnetConfig" class="btn btn-primary">Save changes</button>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="message-text" class="control-label">DeviceName</label>
-                        <ul class="inputgroup">
-                            <input type="text" id="DeviceName">
+            </div>
+        </div>
 
-                            <div style="clear:both"></div>
-                        </ul>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">change info file userinfo.txt</h4>
                     </div>
-                    <div class="form-group">
-                        <label for="message-text" class="control-label">NetNumber</label>
-                        <ul class="inputgroup">
-                            <input type="text" id="NetNumber">
+                    <div class="modal-body">
+                        <form id="changeini">
 
-                            <div style="clear:both"></div>
-                        </ul>
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="control-label">Max_master</label>
-                        <ul class="inputgroup">
-                            <input type="text" id="Max_master">
+                            <div class="form-group">
+                                <label for="message-text" class="control-label">IPAddress</label>
+                                <ul class="inputgroup">
+                                    <li><input type="text" id="IPAddress1"></li>
+                                    <li><input type="text" id="IPAddress2"></li>
+                                    <li><input type="text" id="IPAddress3"></li>
+                                    <li><input type="text" id="IPAddress4"></li>
+                                    <div style="clear:both"></div>
+                                </ul>
+                            </div>
+                            <div class="form-group hidden">
+                                <label for="recipient-name" class="control-label">DHCP</label>
+                                <ul class="inputgroup">
+                                    <li><input type="text" id="DHCP1"></li>
+                                    <li><input type="text" id="DHCP2"></li>
+                                    <li><input type="text" id="DHCP3"></li>
+                                    <li><input type="text" id="DHCP4"></li>
+                                    <div style="clear:both"></div>
+                                </ul>
+                            </div>
 
-                            <div style="clear:both"></div>
-                        </ul>
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="control-label">Max_frame</label>
-                        <ul class="inputgroup">
-                            <input type="text" id="Max_frame">
+                            <div class="form-group">
+                                <label for="message-text" class="control-label">SubnetMask</label>
+                                <ul class="inputgroup">
+                                    <li><input type="text" id="SubnetMask1"></li>
+                                    <li><input type="text" id="SubnetMask2"></li>
+                                    <li><input type="text" id="SubnetMask3"></li>
+                                    <li><input type="text" id="SubnetMask4"></li>
+                                    <div style="clear:both"></div>
+                                </ul>
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="control-label">DefaultGateway</label>
+                                <ul class="inputgroup">
+                                    <li><input type="text" id="DefaultGateway1"></li>
+                                    <li><input type="text" id="DefaultGateway2"></li>
+                                    <li><input type="text" id="DefaultGateway3"></li>
+                                    <li><input type="text" id="DefaultGateway4"></li>
+                                    <div style="clear:both"></div>
+                                </ul>
+                            </div>
 
-                            <div style="clear:both"></div>
-                        </ul>
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="control-label">BacnetType</label>
-                        <ul class="inputgroup">
-                            <select id="BacnetType">
-                                <option value="0">BACnet IP</option>
-                                <option value="1">MS/TP</option>
-                            </select>
 
-                            <div style="clear:both"></div>
-                        </ul>
+                            <div class="form-group hidden">
+                                <label for="message-text" class="control-label">Name</label>
+                                <textarea class="form-control" id="Name"></textarea>
+                            </div>
+                            <div class="form-group hidden">
+                                <label for="message-text" class="control-label">Parameters</label>
+                                <textarea class="form-control" id="Parameters"></textarea>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label for="message-text" class="control-label">DevicePort</label>
-                        <ul class="inputgroup">
-                            <input type="text" id="DevicePort">
-
-                            <div style="clear:both"></div>
-                        </ul>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" id="changeinisub" class="btn btn-primary">Ok</button>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" id="saveBACnetConfig" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="exampleModalLabel">change info file userinfo.txt</h4>
-                </div>
-                <div class="modal-body">
-                    <form id="changeini">
-
-                        <div class="form-group">
-                            <label for="message-text" class="control-label">IPAddress</label>
-                            <ul class="inputgroup">
-                                <li><input type="text" id="IPAddress1"></li>
-                                <li><input type="text" id="IPAddress2"></li>
-                                <li><input type="text" id="IPAddress3"></li>
-                                <li><input type="text" id="IPAddress4"></li>
-                                <div style="clear:both"></div>
-                            </ul>
-                        </div>
-                        <div class="form-group hidden">
-                            <label for="recipient-name" class="control-label">DHCP</label>
-                            <ul class="inputgroup">
-                                <li><input type="text" id="DHCP1"></li>
-                                <li><input type="text" id="DHCP2"></li>
-                                <li><input type="text" id="DHCP3"></li>
-                                <li><input type="text" id="DHCP4"></li>
-                                <div style="clear:both"></div>
-                            </ul>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message-text" class="control-label">SubnetMask</label>
-                            <ul class="inputgroup">
-                                <li><input type="text" id="SubnetMask1"></li>
-                                <li><input type="text" id="SubnetMask2"></li>
-                                <li><input type="text" id="SubnetMask3"></li>
-                                <li><input type="text" id="SubnetMask4"></li>
-                                <div style="clear:both"></div>
-                            </ul>
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="control-label">DefaultGateway</label>
-                            <ul class="inputgroup">
-                                <li><input type="text" id="DefaultGateway1"></li>
-                                <li><input type="text" id="DefaultGateway2"></li>
-                                <li><input type="text" id="DefaultGateway3"></li>
-                                <li><input type="text" id="DefaultGateway4"></li>
-                                <div style="clear:both"></div>
-                            </ul>
-                        </div>
-
-
-                        <div class="form-group hidden">
-                            <label for="message-text" class="control-label">Name</label>
-                            <textarea class="form-control" id="Name"></textarea>
-                        </div>
-                        <div class="form-group hidden">
-                            <label for="message-text" class="control-label">Parameters</label>
-                            <textarea class="form-control" id="Parameters"></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" id="changeinisub" class="btn btn-primary">Ok</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 </body>
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -375,7 +372,7 @@
             dataType: 'html',
             data: "r=r",
             async: false,
-            success: function (res){
+            success: function (res) {
                 $("#data").text(res);
             }
         })
@@ -405,14 +402,12 @@
             var r = confirm("Worning:Press qu'ren server restart!");
             if (r == true) {
                 alert("reboot success");
-
                 $.ajax({
                     type: "get",
                     url: "Reboot.php",
                     dataType: 'json',
                     data: "",
                     success: function () {
-
                     }
                 });
                 window.location.reload();
@@ -482,7 +477,7 @@
             this.value = parseInt(this.value);
         });
         $("#bacnetconfig").click(function () {
-            showXml("bac_config.xml", function (result) {
+            showXml("../../bac_config.xml", function (result) {
                 var xml = $($.parseXML(result));
                 $("#DeviceName").val(xml.find("root name").text());
                 $("#NetNumber").val(xml.find("root net").text());
@@ -497,7 +492,7 @@
                     xml.find("root max_frame").text($("#Max_frame").val());
                     xml.find("root type").text($("#BacnetType").val());
                     xml.find("root rport").text($("#DevicePort").val());
-                    saveXml("bac_config.xml",
+                    saveXml("../../bac_config.xml",
                             function () {
                                 alert("ok")
                             },

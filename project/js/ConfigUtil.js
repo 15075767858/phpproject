@@ -55,28 +55,77 @@ loadXML = function (xmlString) {
 
     return xmlDoc;
 }
+function serializeXml (xmldom) {
+    if (typeof XMLSerializer != "undefined") {
+        if((new XMLSerializer()).serializeToString(xmldom).indexOf("xml version")){
+            return (new XMLSerializer()).serializeToString(xmldom);
+        }
+
+        return '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+"\n"+(new XMLSerializer()).serializeToString(xmldom);
+    } else if (document.implementation.hasFeature("LS", "3.0")) {
+        var implementation = document.implementation;
+        var serializer = implementation.createLSSerializer();
+        return serializer.writeToString(xmldom);
+    } else if (typeof xmldom.xml != "undefined") {
+        return xmldom.xml;
+    } else {
+
+        throw new Error("Could not serialize XML DOM.");
+    }
+}
 xmlToStr = function (xmlDom) {
     if (isIE()) {
-        alert("Exception:no support IE browser,plase change borwser!");
+        //console.log(xmlDom.xml);
+        //xmlDoc=loadXMLDoc("modbus_config.xml");
+        //return xmlDoc.xml;
+        //alert("Exception:no support IE browser,plase change borwser!");
+        //xmlDoc=loadXMLDoc(xmlDom.childNodes[0]);
         return xmlDom.xml;
     } else {
         //alert(new XMLSerializer().serializeToString(xmlDom));
         return new XMLSerializer().serializeToString(xmlDom);
     }
 }
+//请求一个XML文档
+function loadXMLDoc(dname)
+{
+    try //Internet Explorer
+    {
+        xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+    }
+    catch(e)
+    {
+        try //Firefox, Mozilla, Opera, etc.
+        {
+            xmlDoc=document.implementation.createDocument("","",null);
+        }
+        catch(e) {alert(e.message)}
+    }
+    try
+    {
+        xmlDoc.async=false;
+        xmlDoc.load(dname);
+        return(xmlDoc);
+    }
+    catch(e) {alert(e.message)}
+    return(null);
+}
+//读取一个文件
 function showXml(fileName, success) {
     $.ajax({
         type: "POST",
         url: "xmlRW.php",
+        async: false,
         data: "fileName=" + fileName + "&rw=r",
         success: success
     });
 }
-
+//保存一个文件
 function saveXml(fileName, success, content) {
     $.ajax({
         type: "POST",
         url: "xmlRW.php",
+        async: false,
         data: "fileName=" + fileName + "&content=" + content + "&rw=w",
         success: success
     });
@@ -88,7 +137,22 @@ function isIE() { //ie?
         return false;
 }
 
+//ie下节点转字符串
+function NodeToStr(node){
+    var sNodeAttrs="<"+node.nodeName+" ";
+    var oAttr=node.attributes;
+    sNodeAttrs+='feed_dog= \"'+oAttr[1].nodeValue+'\" name=\"'+oAttr[0].nodeValue+'\" ';
+    /*for(var i=0;i<oAttr.length;i++){
+     sNodeAttrs+=oAttr[i].nodeName+"=\'"+oAttr[i].nodeValue+"\' ";
+     }*/
 
+    if(node.nodeValue==null){
+        sNodeAttrs+="/>"
+    }else{
+        sNodeAttrs+=">"+node.nodeValue+"</"+node.nodeName+">";
+    }
+    return sNodeAttrs;
+}
 
 function XmlToFrameJson(XmlDom) {
     var jsonobj = {};
