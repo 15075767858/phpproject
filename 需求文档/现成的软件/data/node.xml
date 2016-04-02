@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root>
+  <mode>
+    <test>3</test>
+    <i830>32</i830>
+    <i831>32</i831>
+    <pio>64</pio>
+    <expio>96</expio>
+  </mode>
+</root>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--标志点，将 本节点以及子节点 的当前值写入磁盘-->
+<root>
+<master_node>
+<number>2</number>
+<type>54</type>					 
+	<slots>
+	<node>1</node>
+	<slot_number>1</slot_number>
+	</slots>
+</master_node>
+</root>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!-- float-->
+<root>
+<master_node>
+<number>2</number>
+<type>55</type> 
+	<slots>
+	<node>1</node>
+	<slot_number>1</slot_number>
+	</slots>
+
+	<slots>
+	<default>8.5</default>
+	</slots>
+
+</master_node>	
+</root>

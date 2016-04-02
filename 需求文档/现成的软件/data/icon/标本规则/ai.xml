@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--取出bacnet对象实例的当前值放入Present_Value中-->
+<root>
+<master_node>
+<number>1</number>
+<type>0</type>
+<instance>1</instance>
+</master_node>	
+</root>

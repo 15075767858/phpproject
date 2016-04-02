@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<root>
+<plant name="">
+</plant >
+
+<master_node>
+<number>1</number>
+<type>50</type>
+	<max_value>1100</max_value>
+	<min_value>1000</min_value> 
+</master_node>	
+<master_node number="0"> 
+	<type>51</type>
+	<slots number="1">
+		<node>1</node>
+		<slot_number>1</slot_number>
+	</slots>
+	<slots number="2">
+		<default>0</default>
+	</slots>
+</master_node>
+
+<master_node number="0">
+	<type>52</type>
+	<slots number="1">
+		<node>1</node>
+		<slot_number>1</slot_number>
+	</slots>
+	<slots number="2">
+		<default>0</default>
+	</slots>
+</master_node>
+
+<master_node number="0"> 
+	<type>53</type>
+	<slots number="1">
+		<node>1</node>
+		<slot_number>1</slot_number>
+	</slots>
+	<slots number="2">
+		<default>0</default>
+	</slots>
+</master_node>
+
+<master_node number="0">  
+	<type>54</type>
+	<slots number="1">
+		<node>1</node>
+		<slot_number>1</slot_number>
+	</slots>
+	<slots number="2">
+		<default>0</default>
+	</slots>
+</master_node>
+
+
+<master_node number="0">
+	<type>55</type>  
+	<slots number="1">
+		<default>50</default>
+	</slots>
+	
+	<slots number="2">
+		<default>0</default>
+	</slots>
+</master_node>
+
+
+<master_node number="0">
+	<type>56</type>  
+	<slots number="1">
+		<default>50</default>
+	</slots>
+	
+	<slots number="2">
+		<default>0</default>
+	</slots>
+	</master_node>
+		<master_node number="0">
+		<type>56</type>
+		<mode>0</mode>
+		<slots number="1">
+		<node>1</node>
+		<slot_number>1</slot_number>
+		</slots>
+		<slots number="2">
+		<default>0</default>
+		</slots>	
+		<slots number="3">
+		<node>0</node>
+		<slot_number>0</slot_number>
+		</slots>
+	<list number="1">
+		<default number="1">0</default>
+		<default number="2">0</default>
+		<default number="3">0</default>
+	</list>
+	<list number="2">	
+		<default number="1">0</default>
+		<default number="2">0</default>
+		<default number="3">0</default>
+	</list>
+		<list number="3">	
+		<default number="1">0</default>
+		<default number="2">0</default>
+	</list>	
+</master_node>	
+
+<master_node number="0"> 
+	<type>57</type>  
+	<slots number="1">
+		<node>1</node>
+		<slot_number>0</slot_number>
+	</slots>
+</master_node>
+
+<master_node number="0">  
+	<type>58</type>
+	<slots number="1">
+		<node>1</node>
+		<slot_number>0</slot_number>
+	</slots>
+</master_node>
+
+<master_node number="0"> 
+	<type>59</type>
+	<slots number="1">
+		<node>1</node>
+		<slot_number>0</slot_number>
+	</slots>
+</master_node>
+
+<master_node number="0">
+	<type>60</type>
+	<slots number="1">
+		<node>25</node>
+		<slot_number>0</slot_number>
+	</slots>
+	<slots number="2">
+		<default>10</default>
+	</slots>
+</master_node>
+
+<master_node number="0"> 
+	<type>61</type>
+<mode>0</mode>
+	<slots>
+	<node>1</node>
+	<slot_number>1</slot_number>
+	</slots>
+	<slots>
+	<default>0</default>
+	</slots>
+</master_node>
+
+<master_node number="0"> 
+	<type>62</type>
+	<mode>2</mode>  
+	<slots number="1">
+		<default>50</default>
+	</slots>
+</master_node>
+
+<master_node number="">
+	<type>63</type>
+	<slots number="1">
+		<default>50</default>
+	</slots>
+	<slots number="2">
+		<default>0</default>
+	</slots>
+	<slots number="3">    
+		<default>0</default>
+	</slots>
+</master_node>
+
+<master_node number="0">
+<type>64</type>  
+<mode>2</mode>				
+	<slots>
+	<node>1</node>
+	<slot_number>20</slot_number>	
+	</slots>
+	<slots>
+	<default>60</default>		
+	</slots>
+	<slots>
+	<default>101325.0</default>		
+	</slots>
+</master_node>
+
+<master_node number="0">       
+<type>65</type>
+	<slots>
+	<default>1</default>		
+	</slots>
+	<slots>
+	<default>8</default>		
+	</slots>
+	<slots>
+	<default>8</default>		
+	</slots>
+	<slots>
+	<default>80</default>		
+	</slots>
+
+<master_node number="0"> 
+<number>2</number>
+<type>66</type>
+	<slots>				
+	<node>1</node>
+	<slot_number>1</slot_number>
+	</slots>
+	<slots>
+	<default>60</default>		
+	</slots>
+	<slots>
+	<default>0</default>		
+	</slots>
+</master_node>	
+
+<master_node number="0"> 
+<number>2</number>
+<type>67</type>
+<P>10.0</P>
+<I>2.0</I>
+<D>0.0</D>
+<max_value>100</max_value>
+<min_value>0</min_value> 
+	<slots>                        
+	<node>1</node>
+	<slot_number>1</slot_number>
+	</slots>
+	<slots>
+	<default>22</default>		
+	</slots>
+	<slots>
+	<default>1</default>		
+	</slots>
+	<slots>
+	<default>0</default>		
+	</slots>
+</master_node>	
+
+<master_node number="0">   
+	<number>1</number>
+	<type>68</type>
+	<slots>
+		<node>2</node>
+		<slot_number>2</slot_number>
+	</slots>
+	<slots>
+		<default>50</default>   
+	</slots>
+	<slots>
+		<default>40</default>	
+	</slots>
+</master_node>
+</master_node>
+<master_node number="0">  
+<number>0</number>
+<type>69</type> 
+	<slots>
+	<default>0</default>
+	</slots>
+	<slots>
+	<default>0</default>
+	</slots>
+</master_node>
+</root>

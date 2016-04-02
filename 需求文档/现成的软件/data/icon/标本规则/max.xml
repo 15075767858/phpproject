@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root>
+  <master_node>
+    <number>2</number>
+    <type>63</type>
+    <mode>0</mode>
+      <!--可为0、1；设为0，取最小值，设为1，取最大值-->
+    <slots>
+      <node>1</node>
+      <slot_number>1</slot_number>
+    </slots>
+
+    <slots>
+      <default>8.5</default>
+    </slots>
+
+  </master_node>
+</root>

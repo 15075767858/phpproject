@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root>
+<master_node>
+<number>1</number>
+<type>51</type>
+	<slots>
+	<node>2</node>
+	<slot_number>2</slot_number>
+	</slots>
+
+	<slots>
+	<default>3.4</default>
+	</slots>
+
+</master_node>
+</root>

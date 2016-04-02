@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root>
+  <master_node>
+    <number>2</number>
+    <type>67</type>
+    <PV>65.0</PV>
+    <I>65.0</I>
+    <D>65.0</D>
+    <max_value>100</max_value>
+    <min_value>0</min_value>
+    <slots>
+      <node>1</node>
+      <slot_number>1</slot_number>
+    </slots>
+
+    <slots>
+      <default>8.5</default>
+    </slots>
+
+    <slots>
+      <default>1</default>		//enable
+    </slots>
+
+    <slots>
+      <default>0</default>		//正向控制或反向控制，0为正
+    </slots>
+
+  </master_node>
+</root>

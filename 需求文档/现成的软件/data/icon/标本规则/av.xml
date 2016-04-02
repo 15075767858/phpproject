@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--执行到该节点时，将其写入对应的bacnet点位,同时读取当前值-->
+<root>
+<master_node>
+<number>2</number>
+<type>1</type>
+<instance>1</instance>
+</master_node>
+	<slots>
+	<node>2</node>
+	<slot_number>2</slot_number>
+	</slots>
+	
+	<slots>
+	<default>3.4</default>
+	</slots>
+</root>

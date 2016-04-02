@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--计数器，有BI或者BV或者BO 输入，值为1时，当前值加一-->
+<root>
+<master_node>
+<number>2</number>
+<type>62</type>
+	<slots>
+	<node>1</node>
+	<slot_number>1</slot_number>
+	</slots>
+	<slots>
+	<default>0</default>
+	</slots>
+</master_node>
+</root>

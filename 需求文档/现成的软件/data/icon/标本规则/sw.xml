@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root>
+  <master_node>
+    <number>2</number>
+    <type>64</type>
+    <slots>
+      <node>1</node>
+      <slot_number>1</slot_number>
+    </slots>
+
+    <slots>
+      <default>8.5</default>
+    </slots>
+
+    <slots>
+      <default>0</default>		//bool值，若为0，将第一个子节点的值写入							本节点的当前值，为1的时候，将第二个直接							点的值写入当前值
+    </slots>
+
+  </master_node>
+</root>

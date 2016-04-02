@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root>
+<plant name="PAU-01">
+<master_node number="1">
+	<type>3</type>
+	<key>1060301</key>
+</master_node>	
+
+<master_node number="2">
+	<type>3</type>
+	<key>1060302</key>
+</master_node>
+
+<master_node number="3">
+	<type>3</type>
+	<key>1060303</key>
+</master_node>
+
+<master_node number="4">
+	<type>3</type>
+	<key>1060304</key>
+</master_node>
+
+<master_node number="5">
+	<type>3</type>
+	<key>1060305</key>
+</master_node>
+
+<master_node number="6">
+	<type>3</type>
+	<key>1060306</key>
+</master_node>
+
+<master_node number="7">
+	<type>51</type>
+	<slots number="1">
+		<node>1</node>
+		<slot_number>0</slot_number>
+	</slots>
+
+	<slots number="2">
+		<default>3.4</default>
+	</slots>
+</master_node>
+
+<master_node number="8">							
+<type>56</type>
+<mode>0</mode>
+	<slots number="1">
+		<node>1</node>
+		<slot_number>1</slot_number>
+	</slots>
+
+	<slots number="2">
+	<default>0</default>
+	</slots>
+	
+	<slots number="3">
+	<node>1</node>
+	<slot_number>1</slot_number>
+	</slots>
+
+	<list number="1">
+	<default number="1">0</default>
+	<default number="2">0</default>
+	<default number="3">0</default>
+	</list>
+
+	<list number="2">	
+	<default number="1">0</default>
+	<default number="2">0</default>
+	<default number="3">0</default>
+	</list>
+
+	<list number="3">	
+	<default number="1">0</default>
+	<default number="2">0</default>
+	</list>	
+	
+</master_node>	
+
+<master_node number="9">
+	<type>4</type>
+	<key>1060401</key>
+	<slots number="1">
+		<node>15</node>
+		<slot_number>0</slot_number>
+	</slots>
+</master_node>
+
+<master_node number="10">
+	<type>4</type>
+	<key>1060402</key>
+	<slots number="1">
+		<node>15</node>
+		<slot_number>0</slot_number>
+	</slots>
+</master_node>
+
+<master_node number="11">
+	<type>4</type>
+	<key>1060403</key>
+	<slots number="1">
+		<node>15</node>
+		<slot_number>0</slot_number>
+	</slots>
+</master_node>
+
+<master_node number="12">
+	<type>4</type>
+	<key>1060404</key>
+	<slots number="1">
+		<node>15</node>
+		<slot_number>0</slot_number>
+	</slots>
+</master_node>
+
+<master_node number="13">
+	<type>4</type>
+	<key>1060405</key>
+	<slots number="1">
+		<node>15</node>
+		<slot_number>0</slot_number>
+	</slots>
+</master_node>
+
+<master_node number="14">
+	<type>4</type>
+	<key>1060406</key>
+	<slots number="1">
+		<node>15</node>
+		<slot_number>0</slot_number>
+	</slots>
+</master_node>
+
+<master_node number="15">
+	<type>65</type>
+	<slots number="1">
+		<default>0</default>
+	</slots>
+	
+	<slots number="2">
+		<default>6</default>
+	</slots>
+	
+	<slots number="3">
+		<default>6</default>
+	</slots>
+	
+	<slots number="4">
+		<default>30</default>
+	</slots>
+</master_node>
+
+<master_node number="16">
+	<type>5</type>
+	<key>1060501</key>
+</master_node>
+
+<master_node number="17">
+	<type>5</type>
+	<key>1060511</key>
+</master_node>
+
+<master_node number="18">
+	<type>2</type>
+	<key>1060201</key>
+	<slots number="1">
+		<node>27</node>
+		<slot_number>0</slot_number>
+	</slots>
+</master_node>
+
+<master_node number="19">
+	<type>2</type>
+	<key>1060202</key>
+	<slots number="1">
+		<node>20</node>
+		<slot_number>0</slot_number>
+	</slots>
+</master_node>
+</plant >
+<plant name="PAU-02">
+<master_node number="20">
+	<type>66</type>
+	<slots number="1">
+		<default>3</default>
+	</slots>
+	<slots number="2">
+		<default>50</default>
+	</slots>
+	<slots number="3">
+		<default>0</default>
+	</slots>
+</master_node>
+
+<master_node number="21">
+	<type>1</type>
+	<key>1060101</key>
+	<slots number="1">
+		<node>20</node>
+		<slot_number>0</slot_number>
+	</slots>
+</master_node>
+
+<master_node number="22">
+	<type>51</type>
+	<slots number="1">
+		<default>50</default>
+	</slots>
+	
+	<slots number="2">
+		<default>20</default>
+	</slots>
+</master_node>
+
+<master_node number="23">
+	<type>55</type>
+	<slots number="1">
+		<default>50</default>
+	</slots>
+	
+	<slots number="2">
+		<default>20</default>
+	</slots>
+</master_node>
+
+<master_node number="24">
+	<type>61</type>
+	<mode>2</mode>
+	<slots number="1">
+		<default>50</default>
+	</slots>
+	
+	<slots number="2">
+		<default>20</default>
+	</slots>
+</master_node>
+	
+<master_node number="25">
+	<type>62</type>
+	<slots number="1">
+		<default>1</default>
+	</slots>
+	
+	<slots number="2">
+		<default>1</default>
+	</slots>
+
+	<slots number="3">
+		<node>1</node>
+		<slot_number>0</slot_number>
+	</slots>
+
+	<slots number="4">
+		<node>2</node>
+		<slot_number>0</slot_number>
+	</slots>
+</master_node>
+
+<master_node number="26">
+	<type>60</type>
+	<slots number="1">
+		<node>25</node>
+		<slot_number>0</slot_number>
+	</slots>
+	
+	<slots number="2">
+		<default>10</default>
+	</slots>
+</master_node>
+
+<master_node number="27">
+	<type>58</type>
+	<slots number="1">
+		<node>1</node>
+		<slot_number>0</slot_number>
+	</slots>
+</master_node>
+
+<master_node number="28">
+	<type>59</type>
+	<slots number="1">
+		<node>24</node>
+		<slot_number>0</slot_number>
+	</slots>
+</master_node>
+</plant >
+</root>

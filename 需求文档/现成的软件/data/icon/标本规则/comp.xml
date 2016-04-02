@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--比较-->
+<root>
+<master_node>
+<number>2</number>
+<type>61</type>
+<mode>0</mode> 
+  <!--取0,1,2 ，若为0，则slot1 < slot2 ,当前值为true，若为1，则slot1 == slot2，当			前值为true，若为2，则slot1 > slot2 ,当前值为true.-->
+	<slots>
+	<node>1</node>
+	<slot_number>1</slot_number>
+	</slots>
+
+	<slots>
+	<default>8.5</default>
+	</slots>
+
+</master_node>	
+</root>

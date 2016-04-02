@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--读取输入的值，若与本节点的当前值不同，延时给定的参数，写入到输出的节点里-->
+<root>
+<master_node>
+<number>2</number>
+<type>60</type>
+	<slots>
+	<node>1</node>
+	<slot_number>1</slot_number>
+	</slots>
+
+	<slots>
+	<default>8</default>  //延时时间(s)
+	</slots>
+
+</master_node>	
+</root>

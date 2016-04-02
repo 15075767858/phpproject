@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root>
+<node1>
+<type>2</type>
+<Object_name>AV1</Object_name>
+<present_Vqlue>null</present_Vqlue>
+<present_type>0<present_type>
+<save>0</save>
+</node1>
+
+<node2>
+<type>51</type>
+<Object_name>add1</Object_name>
+<present_Vqlue>null</present_Vqlue>
+	<form1>
+	<flie>flie001</flie>
+	<node>node1</node>
+	<form>0</form>         //0,读取源节点的结果;1,读取源节点的form1;......最多到10
+    <present_type>0<present_type>
+	<save>0</save>
+	</form1>
+    <form2>
+	<flie>flie001</flie>
+	<node>node1</node>
+	<form>0</form>         //0,读取源节点的结果;1,读取源节点的form1;......最多到10
+    <present_type>0<present_type>
+	<save>0</save>
+	</form2>
+		
+</node2>
+</root>

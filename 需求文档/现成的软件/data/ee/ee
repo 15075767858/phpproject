@@ -1,0 +1,12 @@
+<root>
+  <master_node>
+    <number>1</number>
+    <type>51</type>
+    <slots>
+      <default>3.4</default>
+    </slots>
+    <slots>
+      <default>3.4</default>
+    </slots>
+  </master_node>
+</root>

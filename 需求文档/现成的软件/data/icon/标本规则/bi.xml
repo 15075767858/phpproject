@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--获取指定bacnet节点的值，放入本节点中-->
+<root>
+<master_node>
+<number>2</number>
+<type>3</type>
+<instance>1</instance>
+</master_node>	
+
+</root>

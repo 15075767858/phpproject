@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--第一行的当前值 ，list第一行的值作为延时时间，读取slot1的当前值，写入list第一行第二列，第三列是设定值，以第四列的符号为准，比较设定值与第二列的当前值，得出结果为0或1，用得到的结果与第五列的值比较，若相等，若全部相等，则设定本节点的当前值为1，否则与第六列的当前值进行比较，直到最后一列。若全部列都不相等，则设置本节点的当前值为0.
+全部写入后进行比较？？？？
+若为Bool型，-->
+<root>
+<master_node>								
+<type>56</type>	
+	<slots>
+	<node>1</node>
+	<slot_number>1</slot_number>
+	</slots>
+
+	<slots>
+	<default>8.5</default>
+	</slots>
+	
+	<slots>
+	<node>1</node>
+	<slot_number>1</slot_number>
+	</slots>
+
+	<slots>
+	<default>8.5</default>
+	</slots>
+	
+	<slots>
+	<node>1</node>
+	<slot_number>1</slot_number>
+	</slots>
+
+	<slots>
+	<default>8.5</default>
+	</slots>
+	
+	<slots>
+	<node>1</node>
+	<slot_number>1</slot_number>
+	</slots>
+
+	<slots>
+	<default>8.5</default>
+	</slots>
+	
+	<slots>
+	<node>1</node>
+	<slot_number>1</slot_number>
+	</slots>
+
+	<slots>
+	<default>8.5</default>
+	</slots>
+
+	<list>				//第一列的设定值为float，延时时间
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	</list>
+
+	<list>				//第二列为设定的值，如果为bool，设置为-，float设置为数值用于比较。
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	</list>
+
+	<list>				//第三列为设定的比较符号，用于float类型的比较
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	<default>8.5</default>
+	</list>				//第四列之后的值为0,1，-，其中-为忽略
+	
+</master_node>	
+</root>

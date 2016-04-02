@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--计时器，当子节点的当前值为true时，主节点当前值每分钟加一，最大6位整数，为false，停止计时-->
+<root>
+<master_node>
+<number>2</number>
+<type>59</type>
+	<slots>
+	<node>1</node>
+	<slot_number>1</slot_number>
+	</slots>
+</master_node>	
+</root>

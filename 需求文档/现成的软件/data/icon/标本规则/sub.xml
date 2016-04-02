@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--减法  第一个子节点减第二个子节点-->
+<root>
+<master_node>
+<number>2</number>
+<type>52</type> 
+	<slots>
+	<node>1</node>
+	<slot_number>1</slot_number>
+	</slots>
+
+	<slots>
+	<default>8.5</default>
+	</slots>
+
+</master_node>	
+</root>

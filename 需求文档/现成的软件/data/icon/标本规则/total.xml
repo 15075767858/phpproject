@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--如果enable，每过设定时间的秒数，当前值加一，若当前值大于reset的值，将当前值置为0-->
+<root>
+<master_node>
+<number>2</number>
+<type>66</type>
+	<slots>				//设定的时间s
+	<node>1</node>
+	<slot_number>1</slot_number>
+	</slots>
+
+	<slots>
+	<default>8.5</default>		//reset
+	</slots>
+	
+	<slots>
+	<default>0</default>		//enable
+	</slots>
+
+</master_node>	
+</root>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--脉冲转换状态-->
+<root>
+<master_node>
+<number>2</number>
+<type>65</type>
+	<slots>
+	<default>1</default>		//enable
+	</slots>
+
+	<slots>
+	<default>8</default>		//ON的切换时间
+	</slots>
+	
+	<slots>
+	<default>8</default>		//OFF的切换时间
+	</slots>
+	
+	<slots>
+	<default>80</default>		//lifetime
+	</slots>
+
+</master_node>
+</root>

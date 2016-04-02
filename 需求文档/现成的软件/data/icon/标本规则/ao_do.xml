@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<root>
+<master_node>
+<type>58</type>
+	<slots>
+	<node>2</node>		//主节点号
+	<slot_number>2</slot_number>	//对应主节点的子节点	
+	</slots>
+	<slots>
+	<default>1</default>
+	</slots>
+</master_node>
+</root>
