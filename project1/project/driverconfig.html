@@ -8,6 +8,9 @@
     <!-- TemplateParam name="class" type="URL" value="file:///F|/EM9460www/div-b" -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1"/>
     <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+    <METAHTTP-EQUIV="Pragma"CONTENT="no-cache">
+    <METAHTTP-EQUIV="Cache-Control"CONTENT="no-cache">
+    <METAHTTP-EQUIV="Expires"CONTENT="0">
     <title>BACnet Router&Control</title>
     <style type="text/css">
         .main {
@@ -15,7 +18,14 @@
             width: 753px;
             margin-top: 50px;
         }
-
+        .index{
+            position: fixed;
+            background:url(img/buttons.jpg) no-repeat;
+            width: 75px;
+            height: 75px;
+            top:7%;
+            left: 960px;
+        }
         .configcontent {
             display: -webkit-box;
             display: -moz-box;
@@ -84,8 +94,12 @@
 
         .row2 > .d3 select {
             width: 200px;
+            height:24px;
         }
-
+        .row2 > .d3 input{
+            width:200px;
+            height:24px;
+        }
         .modal-body {
             background-color: dimgrey;
         }
@@ -123,153 +137,167 @@
 </head>
 
 <body>
-<img clss="titleimg" src="title.png" width="960" height="200"/>
+    <img clss="titleimg" src="title.png" width="960" height="200"/>
 
-<div class="main">
-    <div class="panel panel-primary">
-        <!-- Default panel contents -->
-        <div class="panel-heading">driver config</div>
-        <div class="panel-body configcontent">
-            <div class="row3 ">
-                <div>
-                    <input type="radio" checked data-name="modbus" name="BACnet" id="conRadio1">
-                    <span>BACnet IP</span>
-                </div>
-                <ul>
-                    <li>
-                        <input type="checkbox" id="concheck1">
-                        <span>MS/TP Client</span></li>
-                    <li>
-                        <input type="checkbox" id="concheck2">
-                        <span>Progarm Enable</span></li>
-                    <li>
-                        <input type="checkbox" id="concheck3">
-                        <span>Global Enable</span></li>
-                    <li>
-                        <input type="checkbox" id="concheck4">
-                        <span>Modbus Enable</span></li>
-                </ul>
-                <input class='btn btn-info' id="modCon" data-toggle="modal" data-target="#myModal1" type="button"
-                       value="Modbus Config">
-            </div>
-            <div style="clear:both;"></div>
-            <div class="row3 ccrow1">
-                <div>
-                    <input type="radio" data-name="global" name="BACnet" id="conRadio2">
-                    <span>BACnet Router</span>
-                </div>
-                <ul>
-                    <li>
-                        <input type="checkbox" id="concheck5">
-                        <span>BACnet Router</span></li>
-                    <li>
-                        <input type="checkbox" id="concheck6">
-                        <span>Progarm Enable</span></li>
-                    <li>
-                        <input type="checkbox" id="concheck7">
-                        <span>Global Enable</span></li>
-                </ul>
-                <input class='btn btn-info' id="gloCon" data-toggle="modal" data-target="#myModal2" type="button"
-                       value="Global Point Config">
+    <div class="main">
+        <div class="panel panel-primary">
+            <!-- Default panel contents -->
+            <div class="panel-heading">driver config</div>
+            <div class="panel-body configcontent">
+                <div class="row3 ">
+                    <div>
+                        <input type="radio" checked data-name="modbus" name="BACnet" id="conRadio1">
+                        <span>BACnet IP</span>
+                    </div>
+                    <ul>
+                        <li><input type="checkbox" id="concheck1_s"><span>0 or 1</span>
+                            <input type="checkbox" id="concheck1">
+                            <span>MS/TP Client</span> </li>
+                            
+                            <li><input type="checkbox" id="concheck2_s"><span>0 or 1</span>
+                                <input type="checkbox" id="concheck2">
+                                <span>Progarm Enable</span></li>
+                                <li><input type="checkbox" id="concheck3_s"><span>0 or 1</span>
+                                    <input type="checkbox" id="concheck3">
+                                    <span>Global Enable</span></li>
+                                    <li><input type="checkbox" id="concheck4_s"><span>0 or 1</span>
+                                        <input type="checkbox" id="concheck4">
+                                        <span>Modbus Enable</span></li>
+                                    </ul>
+                                    <input class='btn btn-info' id="modCon" data-toggle="modal" data-target="#myModal1" type="button"
+                                    value="OK">
+                                </div>
+                                <div style="clear:both;"></div>
+                                <div class="row3 ccrow1">
+                                    <div>
+                                        <input type="radio" data-name="global" name="BACnet" id="conRadio2">
+                                        <span>BACnet Router</span>
+                                    </div>
+                                    <ul>
+                                        <li><input type="checkbox" id="concheck5_s"><span>0 or 1</span>
+                                            <input type="checkbox" id="concheck5">
+                                            <span>BACnet Router</span></li>
+                                            <li><input type="checkbox" id="concheck6_s"><span>0 or 1</span>
+                                                <input type="checkbox" id="concheck6">
+                                                <span>Progarm Enable</span></li>
+                                                <li><input type="checkbox" id="concheck7_s"><span>0 or 1</span>
+                                                    <input type="checkbox" id="concheck7">
+                                                    <span>Global Enable</span></li>
+                                                </ul>
+                                                <input class='btn btn-info' id="gloCon" data-toggle="modal" data-target="#myModal2" type="button"
+                                                value="OK">
 
-                <div style="clear:both;"></div>
-            </div>
-            <div style="clear:both;"></div>
-            <div class="row2" id="addRadio">
-                <div class="d1">
-                    <input type="radio" checked value="Add" name="AD">
-                    <span>Add</span>
-                </div>
-                <div class="d2">
-                    <input type="radio" value="Delete" name="AD">
-                    <span>Delete</span>
-                </div>
-                <div class="d3">
-                    <select>
-                        <option></option>
+                                                <div style="clear:both;"></div>
+                                            </div>
+                                            <div style="clear:both;"></div>
+                                            <div class="row2" id="addRadio">
+                                                <div class="d1">
+                                                    <input type="radio" checked value="Add" name="AD" id="AddItem">
+                                                    <span>Add</span>
+                                                </div>
+                                                <div class="d2">
+                                                    <input type="radio" value="Delete" name="AD" id="DeleteItem">
+                                                    <span>Delete</span>
+                                                </div>
+                                                <div class="d3">
+                                                    <input></input>
+                                                    <select class="hide">
+                                                        <option></option>
 
-                    </select>
-                    <a class="btn btn-danger btn-xs" id="ok"> Ok </a>
-                    <a class="btn btn-danger btn-xs " href=""> cancle </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div id="xmlpan" class="panel panel-default">
-        <div class="panel-heading">XML Loding...</div>
-        <div class="panel-body">
-            <pre></pre>
-        </div>
-    </div>
-
-</div>
+                                                    </select>
+                                                    <a class="btn btn-danger btn-xs" id="ok"> Ok </a>
+                                                    <a class="btn btn-danger btn-xs " href=""> cancle </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
 
-</body>
-<!-- Modal -->
-<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel1">Modbus.xml Config</h4>
-            </div>
-            <div class="modal-body">
-                <textarea data-id="modbus"></textarea>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger" id="modbuscommit">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel2">Global.xml Config</h4>
-            </div>
-            <div class="modal-body">
-                <textarea data-id="global"></textarea>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger" id="globalcommit">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
+                                    <div id="xmlpan" class="panel panel-default">
+                                        <div class="panel-heading">XML Loding...</div>
+                                        <div class="panel-body">
+                                            <pre></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
 
 
-<script src="js/jquery.min.js"></script>
-<script src="js/ConfigUtil.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/selectivizr.js"></script>
-<script type="text/javascript">
+                            </body>
+                            <!-- Modal -->
+                            <a alt="HOME" href="index.html"><div class='index'></div></a>
+                            <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel1">Modbus.xml Config</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <textarea data-id="modbus"></textarea>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-danger" id="modbuscommit">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                    aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="myModalLabel2">guard Config</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <textarea data-id="global"></textarea>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-danger" id="globalcommit">Save changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <script src="js/jquery.min.js"></script>
+                                    <script src="js/ConfigUtil.js"></script>
+                                    <script src="js/bootstrap.min.js"></script>
+                                    <script src="js/selectivizr.js"></script>
+                                    <script type="text/javascript">
     //modbus
 
     //setTimeout(aa(),500);
 
 
     (function () {
+        $("#AddItem").click(function(){
+            $(".d3 select").addClass("hide")
+            $(".d3 input").removeClass("hide");
+        })
+        
+        $("#DeleteItem").click(function(){
+         $(".d3 select").removeClass("hide")
+         $(".d3 input").addClass("hide");
+
+     })
         $("#modbuscommit").on("click", function () {
-            var fileName = $("#xmlpan .panel-heading").text();
-            var content = $(".modal-body textarea[data-id=modbus]").val();
-            saveXml(fileName, function () {
-                alert("ok")
-            }, content);
-            showXml(fileName, function (res) {
-                $("#xmlpan .panel-heading").html(fileName);
-                $("#xmlpan .panel-body *").text(res);
-            });
+          //  var fileName = $("#xmlpan .panel-heading").text();
+          var fileName="../../guard.xml";
+          var content = $(".modal-body textarea[data-id=modbus]").val();
+          saveXml(fileName, function () {
+            alert("ok")
+        }, content);
+          showXml(fileName, function (res) {
+            $("#xmlpan .panel-heading").html("guard");
+            $("#xmlpan .panel-body *").text(res);
         });
+      });
         $("#globalcommit").on("click", function () {
             var fileName = $("#xmlpan .panel-heading").text();
             var content = $(".modal-body textarea[data-id=global]").val();
@@ -282,20 +310,18 @@
             });
         });
 
-        //modbuscommit
-
-        showXml("modbus.xml", function (res) {
-            $("#xmlpan .panel-heading").html("modbus.xml");
+        showXml("../../guard.xml", function (res) {
+            $("#xmlpan .panel-heading").html("guard");
             $("#xmlpan .panel-body *").text(res);
         });
 
-
+        
         (function () {
             var ajd;
             $.ajax({
                 type: "POST",
                 url: "xmlRW.php",
-                data: "fileName=guard.xml&rw=r",
+                data: "fileName=../../guard.xml&rw=r",
                 success: function (result) {
                     var gxml = $($.parseXML(result));
                     ajd = gxml.find("root *");
@@ -312,13 +338,28 @@
             });
 
             $("#ok").on("click", function () {
-                var seval = $(this).siblings("select").val();
-                if (seval) {
-                    var fileName = $("#xmlpan .panel-heading").text();
+                var seval;
+                if($(this).siblings("select").hasClass("hide")){
+                    seval =$(this).siblings("input").val();
+                    seval =$('<driver feed_dog="1" name="'+seval+'"/>')[0];
+                }else{
+                 seval = $(this).siblings("select").val();
+             }
+             console.log(seval)
+             console.log(typeof seval == "string")
+             if (seval) {
+                    //var fileName = $("#xmlpan .panel-heading").text();
+                    var fileName="../../guard.xml";
                     var fileContent = $("#xmlpan .panel-body").text();
                     showXml(fileName, function (res) {
-                        var oDri = $(ajd[seval])[0].outerHTML || NodeToStr($(ajd[seval])[0]);
+                        var oDri;
 
+                        if( typeof seval =='string'){
+
+                            oDri = $(ajd[seval])[0].outerHTML || NodeToStr($(ajd[seval])[0]);
+                        }else{
+                            oDri = seval.outerHTML;
+                        }
                         var oXML = $($.parseXML(res));
                         var aDri = oXML.find("root *");
                         var ad = $("#addRadio input:radio[name=AD]:checked").val();
@@ -336,12 +377,12 @@
                                     aDri[i].parentNode.removeChild(aDri[i]);
                                     //console.log(aDri)
                                     console.log(oXML)
-                                    alert(serializeXml(oXML[0]));
+                                    //alert(serializeXml(oXML[0]));
                                     saveXml(fileName, function () {
                                         alert("ok")
                                     }, serializeXml(oXML[0]));
                                     showXml(fileName, function (res) {
-                                        $("#xmlpan .panel-heading").html(fileName);
+                                        $("#xmlpan .panel-heading").html("guard");
                                         $("#xmlpan .panel-body *").text(res);
                                     });
                                     return;
@@ -359,7 +400,7 @@
                                 alert("ok")
                             }, content);
                             showXml(fileName, function (res) {
-                                $("#xmlpan .panel-heading").html(fileName);
+                                $("#xmlpan .panel-heading").html("guard");
                                 $("#xmlpan .panel-body *").text(res);
                             });
                             return;
@@ -373,7 +414,7 @@
                         //{
                         // console.log($($.parseXML(res)).find(seval));
                         //}
-                        $("#xmlpan .panel-heading").html("modbus.xml");
+                        $("#xmlpan .panel-heading").html("grard");
                         $("#xmlpan .panel-body *").text(res);
                     });
                     console.log(fileName + fileContent);
@@ -383,72 +424,101 @@
 
             });
 
-        })();
+})();
 
-        $("#conRadio1").on("click", function () {
-            showXml("modbus.xml", function (res) {
-                $("#xmlpan .panel-heading").html("modbus.xml");
+$("#conRadio1").on("click", function () {
+    showXml("../../guard.xml", function (res) {
+                //$("#xmlpan .panel-heading").html("modbus.xml");
                 $("#xmlpan .panel-body *").text(res);
             });
 
-        });
-        $("#conRadio2").on("click", function () {
-            showXml("global.xml", function (res) {
-                $("#xmlpan .panel-heading").html("global.xml");
+});
+$("#conRadio2").on("click", function () {
+    showXml("../../guard.xml", function (res) {
+                //$("#xmlpan .panel-heading").html(".xml");
                 $("#xmlpan .panel-body *").text(res);
             });
 
-        });
+});
 
-        $("#modCon").on("click", function () {
-            var xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' + '\n' + '<root>';
-            if ($("#concheck1")[0].checked) {
-                xml += '\n' + '<driver feed_dog="1" name="bac-server"/>';
-            }
-            if ($("#concheck2")[0].checked) {
-                xml += '\n' + '<driver feed_dog="1" name="bac-client"/>';
-                xml += '\n' + '<driver feed_dog="1" name="bac-logic"/>';
-            }
-            if ($("#concheck3")[0].checked) {
-                xml += '\n' + '<driver feed_dog="1" name="bac-global"/>';
-            }
-            if ($("#concheck4")[0].checked) {
-                xml += '\n' + '<driver feed_dog="1" name="bac-modbus"/>';
-            }
-            ;
-            xml += '\n' + '</root>';
-            $(".modal-body textarea[data-id=modbus]").val(xml);
-        });
+$("#modCon").on("click", function () {
+    var xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' + '\n' + '<root>';
+    if ($("#concheck1")[0].checked) {
+        var isSelect=0;
+        if ($("#concheck1_s")[0].checked) {
+            isSelect=1;
+        }
 
-        $("#gloCon").on("click", function () {
-            var xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' + '\n' + '<root>';
+        xml += '\n' + '<driver feed_dog="'+isSelect+'" name="bac-server"/>';
+    }
+    if ($("#concheck2")[0].checked) {
+        var isSelect=0;
+        if ($("#concheck2_s")[0].checked) {
+            isSelect=1;
+        }
+        xml += '\n' + '<driver feed_dog="'+isSelect+'" name="bac-client"/>';
+        xml += '\n' + '<driver feed_dog="'+isSelect+'" name="bac-logic"/>';
+    }
+    if ($("#concheck3")[0].checked) {
+        var isSelect=0;
+        if ($("#concheck3_s")[0].checked) {
+            isSelect=1;
+        }
+        xml += '\n' + '<driver feed_dog="'+isSelect+'" name="bac-global"/>';
+    }
+    if ($("#concheck4")[0].checked) {
+        var isSelect=0;
+        if ($("#concheck4_s")[0].checked) {
+            isSelect=1;
+        }
+        xml += '\n' + '<driver feed_dog="'+isSelect+'" name="bac-modbus"/>';
+    }
+    ;
+    xml += '\n' + '</root>';
+    $(".modal-body textarea[data-id=modbus]").val(xml);
+});
+
+$("#gloCon").on("click", function () {
+    var xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' + '\n' + '<root>';
             //xml = $(loadXML('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><root></root>'));
             if ($("#concheck5")[0].checked) {
-                xml += '\n' + '<driver feed_dog="1" name="bac-server"/>';
+                var isSelect=0;
+                if ($("#concheck5_s")[0].checked) {
+                    isSelect=1;
+                }
+                xml += '\n' + '<driver feed_dog="'+isSelect+'" name="bac-mrouter"/>';
             }
             if ($("#concheck6")[0].checked) {
-                xml += '\n' + '<driver feed_dog="1" name="bac-client"/>';
-                xml += '\n' + '<driver feed_dog="1" name="bac-logic"/>';
+                var isSelect=0;
+                if ($("#concheck6_s")[0].checked) {
+                    isSelect=1;
+                }
+                /*xml += '\n' + '<driver feed_dog="1" name="bac-client"/>';*/
+                xml += '\n' + '<driver feed_dog="'+isSelect+'" name="bac-logic"/>';
             }
             if ($("#concheck7")[0].checked) {
+                var isSelect=0;
+                if ($("#concheck7_s")[0].checked) {
+                    isSelect=1;
+                }
                 xml += '\n' + '<driver feed_dog="1" name="bac-global"/>';
             }
             xml += '\n' + '</root>';
             $(".modal-body textarea[data-id=global]").val(xml);
         });
-        $(".configcontent .ccrow1 input[type!=radio]").attr("disabled", "disabled");
-        $(".configcontent input:radio[name=BACnet]").on("change", function () {
-            $(".configcontent input:checkbox,input:button").attr("disabled", "disabled");
-            $(this).parents(".row3").find("input:checkbox,input:button").attr("disabled", null);
-        })
-    })();
+$(".configcontent .ccrow1 input[type!=radio]").attr("disabled", "disabled");
+$(".configcontent input:radio[name=BACnet]").on("change", function () {
+    $(".configcontent input:checkbox,input:button").attr("disabled", "disabled");
+    $(this).parents(".row3").find("input:checkbox,input:button").attr("disabled", null);
+})
+})();
 
 
-    window.onload = function () {
+window.onload = function () {
         /*if(isIE()){
          alert("Exception:no support IE browser,plase change borwser!");
-         }*/
-    }
+     }*/
+ }
 
 </script>
 

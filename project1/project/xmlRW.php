@@ -2,6 +2,8 @@
 $fn=$_POST['fileName'];
 $rw=$_POST['rw'];
 
+//$fn=$_GET['fileName'];
+//$rw=$_GET['rw'];
 if($rw=='r'){
     $fp = fopen($fn, 'r');
     while(! feof($fp))
