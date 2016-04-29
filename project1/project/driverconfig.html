@@ -3,28 +3,44 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
     <!-- TemplateParam name="class" type="URL" value="file:///F|/EM9460www/div-b" -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1"/>
     <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-    <METAHTTP-EQUIV="Pragma"CONTENT="no-cache">
-    <METAHTTP-EQUIV="Cache-Control"CONTENT="no-cache">
-    <METAHTTP-EQUIV="Expires"CONTENT="0">
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache"/>
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"/>
     <title>BACnet Router&Control</title>
     <style type="text/css">
         .main {
             margin-left: 50px;
             width: 753px;
-            margin-top: 50px;
         }
-        .index{
+
+        .index {
             position: fixed;
-            background:url(img/buttons.jpg) no-repeat;
+            background: url(img/buttons.jpg) no-repeat;
             width: 75px;
             height: 75px;
-            top:7%;
+            top: 7%;
             left: 960px;
+        }
+
+        .toolbar {
+            margin: 50px 0px 50px 50px;
+        }
+
+
+        .toolbar>button{
+            width: 160px;
+            margin:0px 22px;
+            color:white;
+        }
+        .toolbar>button:hover{
+            color:blue;
+        }
+        .button_shadow{
+            box-shadow:2px 2px 10px #000;
         }
         .configcontent {
             display: -webkit-box;
@@ -55,16 +71,31 @@
             float: left;
         }
 
+        .row3 > div {
+            width: 20%;
+        }
+
+        .row3 > ul {
+            width: 40%;
+            margin-left: 50px;
+        }
+
+        .row3 > ul > li > span:nth-child(2) {
+            margin-right: 20px;
+        }
+
         .row3 > div:nth-child(1) > span {
             font-size: 18px;
         }
 
         .row3:nth-child(1) > input {
             margin-top: 63px;
+            margin-left: 20px;
         }
 
         .row3:nth-child(3) > input {
             margin-top: 40px;
+            margin-left: 20px;
         }
 
         .row2 {
@@ -94,12 +125,14 @@
 
         .row2 > .d3 select {
             width: 200px;
-            height:24px;
+            height: 24px;
         }
-        .row2 > .d3 input{
-            width:200px;
-            height:24px;
+
+        .row2 > .d3 input {
+            width: 200px;
+            height: 24px;
         }
+
         .modal-body {
             background-color: dimgrey;
         }
@@ -121,7 +154,7 @@
         #xmlpan {
             position: absolute;
             left: 811px;
-            top: 250px;
+            top: 358px;
         }
 
         #xmlpan .panel-heading {
@@ -139,6 +172,16 @@
 <body>
     <img clss="titleimg" src="title.png" width="960" height="200"/>
 
+    <div class="toolbar">
+        <!-- Large button group -->
+        <button type="button" class="btn btn-danger btn-lg button_shadow" aria-label="Left Align" id="reboot">
+            <span class="glyphicon glyphicon-refresh " aria-hidden="true"></span> Reboot
+        </button>
+        <button type="button" class="btn btn-warning btn-lg button_shadow"  onclick="location.href='index.html'" aria-label="Left Align">
+            <span class="glyphicon glyphicon-off" aria-hidden="true"></span> Exit
+        </button>
+
+    </div>
     <div class="main">
         <div class="panel panel-primary">
             <!-- Default panel contents -->
@@ -150,21 +193,21 @@
                         <span>BACnet IP</span>
                     </div>
                     <ul>
-                        <li><input type="checkbox" id="concheck1_s"><span>0 or 1</span>
+                        <li><input type="checkbox" class="feeddogselect" id="concheck1_s"><span>feeddog Enable</span>
                             <input type="checkbox" id="concheck1">
-                            <span>MS/TP Client</span> </li>
-                            
-                            <li><input type="checkbox" id="concheck2_s"><span>0 or 1</span>
+                            <span>MS/TP Client</span></li>
+
+                            <li><input type="checkbox" class="feeddogselect" id="concheck2_s"><span>feeddog Enable</span>
                                 <input type="checkbox" id="concheck2">
                                 <span>Progarm Enable</span></li>
-                                <li><input type="checkbox" id="concheck3_s"><span>0 or 1</span>
+                                <li><input type="checkbox" class="feeddogselect" id="concheck3_s"><span>feeddog Enable</span>
                                     <input type="checkbox" id="concheck3">
                                     <span>Global Enable</span></li>
-                                    <li><input type="checkbox" id="concheck4_s"><span>0 or 1</span>
+                                    <li><input type="checkbox" class="feeddogselect" id="concheck4_s"><span>feeddog Enable</span>
                                         <input type="checkbox" id="concheck4">
                                         <span>Modbus Enable</span></li>
                                     </ul>
-                                    <input class='btn btn-info' id="modCon" data-toggle="modal" data-target="#myModal1" type="button"
+                                    <input class='btn btn-info button_shadow' id="modCon" data-toggle="modal" data-target="#myModal1" type="button"
                                     value="OK">
                                 </div>
                                 <div style="clear:both;"></div>
@@ -174,17 +217,17 @@
                                         <span>BACnet Router</span>
                                     </div>
                                     <ul>
-                                        <li><input type="checkbox" id="concheck5_s"><span>0 or 1</span>
+                                        <li><input type="checkbox" class="feeddogselect" id="concheck5_s"><span>feeddog Enable</span>
                                             <input type="checkbox" id="concheck5">
                                             <span>BACnet Router</span></li>
-                                            <li><input type="checkbox" id="concheck6_s"><span>0 or 1</span>
+                                            <li><input type="checkbox" class="feeddogselect" id="concheck6_s"><span>feeddog Enable</span>
                                                 <input type="checkbox" id="concheck6">
                                                 <span>Progarm Enable</span></li>
-                                                <li><input type="checkbox" id="concheck7_s"><span>0 or 1</span>
+                                                <li><input type="checkbox" class="feeddogselect" id="concheck7_s"><span>feeddog Enable</span>
                                                     <input type="checkbox" id="concheck7">
                                                     <span>Global Enable</span></li>
                                                 </ul>
-                                                <input class='btn btn-info' id="gloCon" data-toggle="modal" data-target="#myModal2" type="button"
+                                                <input class='btn btn-info button_shadow' id="gloCon" data-toggle="modal" data-target="#myModal2" type="button"
                                                 value="OK">
 
                                                 <div style="clear:both;"></div>
@@ -225,7 +268,10 @@
 
                             </body>
                             <!-- Modal -->
-                            <a alt="HOME" href="index.html"><div class='index'></div></a>
+                            <a alt="HOME" href="index.html">
+                                <div class='index'></div>
+                            </a>
+
                             <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -265,6 +311,7 @@
                                     </div>
 
 
+
                                     <script src="js/jquery.min.js"></script>
                                     <script src="js/ConfigUtil.js"></script>
                                     <script src="js/bootstrap.min.js"></script>
@@ -274,37 +321,69 @@
 
     //setTimeout(aa(),500);
 
-
+    var fName = "../../guard.xml";
     (function () {
-        $("#AddItem").click(function(){
+        $("#reboot").on("click", function () {
+
+            var r = confirm("Worning:Press qu'ren server restart!");
+            if (r == true) {
+                alert("reboot success");
+                $.ajax({
+                    type: "get",
+                    url: "Reboot.php",
+                    dataType: 'json',
+                    data: "",
+                    success: function () {
+                    }
+                });
+                window.location.reload();
+            }
+        })
+        $("#AddItem").click(function () {
             $(".d3 select").addClass("hide")
             $(".d3 input").removeClass("hide");
         })
-        
-        $("#DeleteItem").click(function(){
-         $(".d3 select").removeClass("hide")
-         $(".d3 input").addClass("hide");
 
-     })
+        $("#DeleteItem").click(function () {
+            $(".d3 select").removeClass("hide")
+            $(".d3 input").addClass("hide");
+
+        })
+        $(".feeddogselect").trigger("click")
+
+        $(".feeddogselect").click(function () {
+            if (this.checked) {
+                $(this).next("span").html("feeddog Enable")
+            } else {
+                $(this).next("span").html("feeddog Disable")
+            }
+        })
+        setTimeout(function () {
+            $("#conRadio2").trigger("click");
+            $("#concheck5").trigger("click");
+            $("#concheck6").trigger("click");
+            $("#concheck7").trigger("click");
+        }, 0)
+
         $("#modbuscommit").on("click", function () {
-          //  var fileName = $("#xmlpan .panel-heading").text();
-          var fileName="../../guard.xml";
-          var content = $(".modal-body textarea[data-id=modbus]").val();
-          saveXml(fileName, function () {
-            alert("ok")
-        }, content);
-          showXml(fileName, function (res) {
-            $("#xmlpan .panel-heading").html("guard");
-            $("#xmlpan .panel-body *").text(res);
-        });
-      });
-        $("#globalcommit").on("click", function () {
-            var fileName = $("#xmlpan .panel-heading").text();
-            var content = $(".modal-body textarea[data-id=global]").val();
+            //  var fileName = $("#xmlpan .panel-heading").text();
+            var fileName = "../../guard.xml";
+            var content = $(".modal-body textarea[data-id=modbus]").val();
             saveXml(fileName, function () {
                 alert("ok")
             }, content);
             showXml(fileName, function (res) {
+                $("#xmlpan .panel-heading").html("guard");
+                $("#xmlpan .panel-body *").text(res);
+            });
+        });
+        $("#globalcommit").on("click", function () {
+            var fileName = $("#xmlpan .panel-heading").text();
+            var content = $(".modal-body textarea[data-id=global]").val();
+            saveXml("../../guard.xml", function () {
+                alert("ok")
+            }, content);
+            showXml("../../guard.xml", function (res) {
                 $("#xmlpan .panel-heading").html(fileName);
                 $("#xmlpan .panel-body *").text(res);
             });
@@ -315,7 +394,7 @@
             $("#xmlpan .panel-body *").text(res);
         });
 
-        
+
         (function () {
             var ajd;
             $.ajax({
@@ -339,25 +418,25 @@
 
             $("#ok").on("click", function () {
                 var seval;
-                if($(this).siblings("select").hasClass("hide")){
-                    seval =$(this).siblings("input").val();
-                    seval =$('<driver feed_dog="1" name="'+seval+'"/>')[0];
-                }else{
-                 seval = $(this).siblings("select").val();
-             }
-             console.log(seval)
-             console.log(typeof seval == "string")
-             if (seval) {
+                if ($(this).siblings("select").hasClass("hide")) {
+                    seval = $(this).siblings("input").val();
+                    seval = $('<driver feed_dog="1" name="' + seval + '"/>')[0];
+                } else {
+                    seval = $(this).siblings("select").val();
+                }
+                console.log(seval)
+                console.log(typeof seval == "string")
+                if (seval) {
                     //var fileName = $("#xmlpan .panel-heading").text();
-                    var fileName="../../guard.xml";
+                    var fileName = "../../guard.xml";
                     var fileContent = $("#xmlpan .panel-body").text();
                     showXml(fileName, function (res) {
                         var oDri;
 
-                        if( typeof seval =='string'){
+                        if (typeof seval == 'string') {
 
                             oDri = $(ajd[seval])[0].outerHTML || NodeToStr($(ajd[seval])[0]);
-                        }else{
+                        } else {
                             oDri = seval.outerHTML;
                         }
                         var oXML = $($.parseXML(res));
@@ -444,34 +523,34 @@ $("#conRadio2").on("click", function () {
 $("#modCon").on("click", function () {
     var xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' + '\n' + '<root>';
     if ($("#concheck1")[0].checked) {
-        var isSelect=0;
+        var isSelect = 0;
         if ($("#concheck1_s")[0].checked) {
-            isSelect=1;
+            isSelect = 1;
         }
 
-        xml += '\n' + '<driver feed_dog="'+isSelect+'" name="bac-server"/>';
+        xml += '\n' + '<driver feed_dog="' + isSelect + '" name="bac-server"/>';
     }
     if ($("#concheck2")[0].checked) {
-        var isSelect=0;
+        var isSelect = 0;
         if ($("#concheck2_s")[0].checked) {
-            isSelect=1;
+            isSelect = 1;
         }
-        xml += '\n' + '<driver feed_dog="'+isSelect+'" name="bac-client"/>';
-        xml += '\n' + '<driver feed_dog="'+isSelect+'" name="bac-logic"/>';
+        xml += '\n' + '<driver feed_dog="' + isSelect + '" name="bac-client"/>';
+        xml += '\n' + '<driver feed_dog="' + isSelect + '" name="bac-logic"/>';
     }
     if ($("#concheck3")[0].checked) {
-        var isSelect=0;
+        var isSelect = 0;
         if ($("#concheck3_s")[0].checked) {
-            isSelect=1;
+            isSelect = 1;
         }
-        xml += '\n' + '<driver feed_dog="'+isSelect+'" name="bac-global"/>';
+        xml += '\n' + '<driver feed_dog="' + isSelect + '" name="bac-global"/>';
     }
     if ($("#concheck4")[0].checked) {
-        var isSelect=0;
+        var isSelect = 0;
         if ($("#concheck4_s")[0].checked) {
-            isSelect=1;
+            isSelect = 1;
         }
-        xml += '\n' + '<driver feed_dog="'+isSelect+'" name="bac-modbus"/>';
+        xml += '\n' + '<driver feed_dog="' + isSelect + '" name="bac-modbus"/>';
     }
     ;
     xml += '\n' + '</root>';
@@ -482,26 +561,26 @@ $("#gloCon").on("click", function () {
     var xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' + '\n' + '<root>';
             //xml = $(loadXML('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><root></root>'));
             if ($("#concheck5")[0].checked) {
-                var isSelect=0;
+                var isSelect = 0;
                 if ($("#concheck5_s")[0].checked) {
-                    isSelect=1;
+                    isSelect = 1;
                 }
-                xml += '\n' + '<driver feed_dog="'+isSelect+'" name="bac-mrouter"/>';
+                xml += '\n' + '<driver feed_dog="' + isSelect + '" name="bac-mrouter"/>';
             }
             if ($("#concheck6")[0].checked) {
-                var isSelect=0;
+                var isSelect = 0;
                 if ($("#concheck6_s")[0].checked) {
-                    isSelect=1;
+                    isSelect = 1;
                 }
-                /*xml += '\n' + '<driver feed_dog="1" name="bac-client"/>';*/
-                xml += '\n' + '<driver feed_dog="'+isSelect+'" name="bac-logic"/>';
+                xml += '\n' + '<driver feed_dog="' + isSelect + '" name="bip-client"/>';
+                xml += '\n' + '<driver feed_dog="' + isSelect + '" name="bac-logic"/>';
             }
             if ($("#concheck7")[0].checked) {
-                var isSelect=0;
+                var isSelect = 0;
                 if ($("#concheck7_s")[0].checked) {
-                    isSelect=1;
+                    isSelect = 1;
                 }
-                xml += '\n' + '<driver feed_dog="1" name="bac-global"/>';
+                xml += '\n' + '<driver feed_dog="'+isSelect+'" name="bac-global"/>';
             }
             xml += '\n' + '</root>';
             $(".modal-body textarea[data-id=global]").val(xml);
