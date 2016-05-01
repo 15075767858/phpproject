@@ -359,10 +359,15 @@
             }
         })
         setTimeout(function () {
+            $("#concheck1").trigger("click");
+            $("#concheck2").trigger("click");
+            $("#concheck3").trigger("click");
             $("#conRadio2").trigger("click");
             $("#concheck5").trigger("click");
             $("#concheck6").trigger("click");
             $("#concheck7").trigger("click");
+            
+            
         }, 0)
 
         $("#modbuscommit").on("click", function () {
