@@ -115,7 +115,7 @@ function loadXMLDoc(dname)
 function showXml(fileName, success) {
     $.ajax({
         type: "POST",
-        url: "xmlRW.php",
+        url: "php/xmlRW.php",
         async: false,
         data: "fileName=" + fileName + "&rw=r",
         success: success
@@ -125,7 +125,7 @@ function showXml(fileName, success) {
 function saveXml(fileName, success, content) {
     $.ajax({
         type: "POST",
-        url: "xmlRW.php",
+        url: "php/xmlRW.php",
         async: false,
         data: "fileName=" + fileName + "&content=" + content + "&rw=w",
         success: success
@@ -217,37 +217,6 @@ function addXmlNodeByIndex(XmlDom,Index,oEle){
     return XmlDom;
 };
 
-
-/*
-function deleteXmlNodeByIndex(XmlDom,Index){
-    var indexCount=0;
-    findDom(XmlDom,Index);
-    function findDom(XmlDom,Index){
-
-    for (var i = 0; i < XmlDom.childNodes.length; i++) {
-        if (XmlDom.childNodes[i].nodeType == 1) {
-            console.log(XmlDom.childNodes[i])
-            indexCount++;
-
-        }
-    }
-    }
-    return XmlDom;
-}*/
-
-
-/*
- //var name = childNode.tagName;
- //jsonobj['name'] = XmlDom.childNodes[i].tagName;
- //console.log(name)
-
- var iCount=0;
- for(var k=0;k<childNode.childNodes.length;k++){
- if(childNode.childNodes[k].nodeType==1){
- oNewChildNode[iCount]=childNode.childNodes[k];
- iCount++;
- }
- }*/
 
 
 function formatXml(text) {

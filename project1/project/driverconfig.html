@@ -176,7 +176,7 @@
 </head>
 
 <body>
-	<img clss="titleimg" src="title.png" width="960" height="200"/>
+	<img clss="titleimg" src="img/title.png" width="960" height="200"/>
 
 	<div class="toolbar">
 		<!-- Large button group -->
@@ -274,9 +274,9 @@
 
 							</body>
 							<!-- Modal -->
-							<a alt="HOME" href="index.html">
+							<!-- <a alt="HOME" href="index.html">
 								<div class='index'></div>
-							</a>
+							</a> -->
 
 							<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 								<div class="modal-dialog" role="document">
@@ -336,7 +336,7 @@
     			alert("reboot success");
     			$.ajax({
     				type: "get",
-    				url: "Reboot.php",
+    				url: "php/Reboot.php",
     				dataType: 'json',
     				data: "",
     				success: function () {
@@ -408,7 +408,7 @@
     		var ajd;
     		$.ajax({
     			type: "POST",
-    			url: "xmlRW.php",
+    			url: "php/xmlRW.php",
     			data: "fileName=../../guard.xml&rw=r",
     			success: function (result) {
     				var gxml = $($.parseXML(result));
