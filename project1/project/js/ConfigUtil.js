@@ -85,6 +85,7 @@ xmlToStr = function (xmlDom) {
         //alert(new XMLSerializer().serializeToString(xmlDom));
         return new XMLSerializer().serializeToString(xmlDom);
     }
+
 }
 //请求一个XML文档
 function loadXMLDoc(dname)

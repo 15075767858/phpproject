@@ -4,7 +4,11 @@ $rw=$_POST['rw'];
 
 //$fn=$_GET['fileName'];
 //$rw=$_GET['rw'];
+
 if($rw=='r'){
+	if(!file_exists($fn)){
+		return;
+	}
     $fp = fopen($fn, 'r');
     while(! feof($fp))
 { 
