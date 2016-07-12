@@ -2,6 +2,154 @@
  * Created by liuzhencai on 16/7/11.
  */
 
+function centerConfig(xmlFile) {
+
+    var treeStore = Ext.create("Ext.data.TreeStore", {
+        root: {}
+    })
+    var root = getTreeRoot(xmlFile);
+
+    function getTreeRoot(xmlFile) {
+        var root;
+        showXml(xmlFile, function (res) {
+            var xml = $.parseXML(res)
+            root = XmlToFrameJson(xml.childNodes[0])
+        })
+        return root
+    }
+
+    treeStore.setRootNode(root)
+    var treePanel = Ext.create("Ext.tree.Panel", {
+        region: "center",
+        useArrows: true,
+        animate: true,
+        store: treeStore,
+        checkPropagation: "both",
+        bufferedRenderer: false,
+        viewConfig: {
+            plugins: {
+                ptype: 'treeviewdragdrop',
+                appendOnly: true,
+                sortOnDrop: true,
+                containerScroll: true
+            }
+        },
+        tbar: [
+            {
+                text: 'Expand All',
+                scope: this,
+                handler: function (th) {
+                    treePanel.expandAll()
+                }
+            }, {
+                text: 'Collapse All',
+                scope: this,
+                handler: function (th) {
+                    treePanel.collapseAll()
+                }
+            }, "->", {
+                text: "refresh",
+                handler: function () {
+                    treeStore.setRootNode(getTreeRoot(xmlFile))
+                }
+            }
+        ],
+        listeners: {
+            itemcontextmenu: function (node, record, item, index, e, eOpts) {
+                e.stopEvent()
+                console.log(arguments)
+                Ext.create("Ext.menu.Menu", {
+                    autoShow: true,
+                    x: e.pageX,
+                    y: e.pageY,
+                    items: [
+                        {
+                            text: "Add Node", handler: function () {
+                            record.set("leaf", false)
+                            for (var i = 0; i < record.childNodes.length; i++) {
+                                if (record.childNodes[i].data.leaf == true) {
+                                    record.childNodes[i].remove()
+                                }
+                            }
+                            record.appendChild({
+                                text: "new node",
+                                leaf: false
+                            })
+                        }
+                        }, {
+                            text: "Add Value", handler: function () {
+                                record.removeAll();
+                                record.appendChild({
+                                    text: "default value",
+                                    leaf: true
+                                })
+                            }
+                        },
+                        {
+                            text: "Delete Node", handler: function () {
+                            record.remove()
+                        }
+                        },
+                        {
+                            text: "Rename", handler: function () {
+                            var tempWin = Ext.create("Ext.window.Window", {
+                                width: 300,
+                                bodyPadding: 10,
+                                title: "Set Node Parameter",
+                                layout: "auto",
+                                modal: true,
+                                autoShow: true,
+                                items: {
+                                    xtype: "textfield",
+                                    fieldLabel: "Input Node Info",
+                                    value: record.data.text
+                                },
+                                buttons: [{
+                                    text: "Ok",
+                                    handler: function () {
+                                        record.set("text", tempWin.items.items[0].value)
+                                        tempWin.close()
+                                    }
+                                }]
+                            })
+                        }
+                        }
+                    ]
+                })
+            }
+        }
+    })
+
+    Ext.create("Ext.window.Window", {
+        height: 800,
+        width: 600,
+        title: "center_config Config",
+        autoShow: true,
+
+        renderTo: Ext.getBody(),
+        layout: "border",
+        items: [treePanel],
+        buttons: [{
+            text: "Ok",
+            handler: function (win) {
+                var root = FrameJsonToXml(treePanel.getRootNode())
+                var content = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>\r\n' + formatXml(root.outerHTML)
+                saveXml(xmlFile, function () {
+                    Ext.Msg.alert("Massage", "Ok!")
+                }, content)
+                win.close();
+            }
+        }],
+        listeners:{
+            close:function(){
+                window.location.href="index.html"
+            }
+        }
+    })
+
+}
+
+
 function globalClick() {
 
     var IPCombo = Ext.create("Ext.form.field.ComboBox", {
@@ -35,7 +183,7 @@ function globalClick() {
                             proxy: {
                                 type: "ajax",
                                 autoLoad: true,
-                                url: "php/test4.php?ip=" + IPCombo.value + "&port=" + PortCombo.value,
+                                url: "php/globalTree.php?ip=" + IPCombo.value + "&port=" + PortCombo.value,
                                 reader: {
                                     type: "json"
                                 }
@@ -73,24 +221,24 @@ function globalClick() {
         }, "->", {
             text: "config read time", handler: function () {
                 //var xml =   loadXML("/mnt/nandflash/bac_config.xml")
-                var xmlFile="../../bac_config.xml";
+                var xmlFile = "../../bac_config.xml";
                 showXml(xmlFile, function (res) {
-                  var   xml = loadXML(res)
+                    var xml = loadXML(res)
                     var readtime = xml.querySelector("read_time")
                     if (readtime) {
                         var value = readtime.innerHTML;
                     }
                     var win = Ext.create("Ext.window.Window", {
                         width: 300,
-                        bodyPadding:10,
-                        title:"Config Read Time",
-                        layout:"auto",
+                        bodyPadding: 10,
+                        title: "Config Read Time",
+                        layout: "auto",
                         modal: true,
                         autoShow: true,
                         items: {
                             xtype: "textfield",
                             fieldLabel: "Read Time",
-                            value: value||""
+                            value: value || ""
                         },
                         buttons: [{
                             text: "Ok",
@@ -102,15 +250,15 @@ function globalClick() {
                                         Ext.Msg.alert("Massage", "Ok!")
                                     }, content)
 
-                                }else{
+                                } else {
                                     var root = document.createElement("root");
                                     var rootChildren = xml.querySelector("root").querySelectorAll("*")
                                     readtime = document.createElement("read_time")
-                                    readtime.innerHTML=win.items.items[0].value
+                                    readtime.innerHTML = win.items.items[0].value
                                     root.appendChild(readtime);
-                                    for(var i=0;i<rootChildren.length;i++){
+                                    for (var i = 0; i < rootChildren.length; i++) {
                                         var tag = document.createElement(rootChildren[i].tagName);
-                                        tag.innerHTML=rootChildren[i].innerHTML
+                                        tag.innerHTML = rootChildren[i].innerHTML
                                         root.appendChild(tag)
                                     }
                                     var content = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>\r\n' + formatXml(root.outerHTML)

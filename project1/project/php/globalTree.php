@@ -34,7 +34,7 @@ foreach ($devs as $key => $value) {
 
 function getDevNodeTypeByDevName($devName,$redis){
 	$arr=array();
-	$types=array('AI'=>'0??','AO'=>'1??',"AV"=>"2??","BI"=>"3??","BO"=>"4??","BV"=>"5??","Schedule"=>"6??");
+	$types=array('AI'=>'0??','AO'=>'1??',"AV"=>"2??","BI"=>"3??","BO"=>"4??","BV"=>"5??");
 	foreach ($types as $key => $value) {
 		$arr1=array();
 		$arr1['text']=$key;

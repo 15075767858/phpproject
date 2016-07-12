@@ -55,13 +55,13 @@ loadXML = function (xmlString) {
 
     return xmlDoc;
 }
-function serializeXml (xmldom) {
+function serializeXml(xmldom) {
     if (typeof XMLSerializer != "undefined") {
-        if((new XMLSerializer()).serializeToString(xmldom).indexOf("xml version")){
+        if ((new XMLSerializer()).serializeToString(xmldom).indexOf("xml version")) {
             return (new XMLSerializer()).serializeToString(xmldom);
         }
 
-        return '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+"\n"+(new XMLSerializer()).serializeToString(xmldom);
+        return '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' + "\n" + (new XMLSerializer()).serializeToString(xmldom);
     } else if (document.implementation.hasFeature("LS", "3.0")) {
         var implementation = document.implementation;
         var serializer = implementation.createLSSerializer();
@@ -87,31 +87,32 @@ xmlToStr = function (xmlDom) {
     }
 
 }
-//ÇëÇóÒ»¸öXMLÎÄµµ
-function loadXMLDoc(dname)
-{
+//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½XMLï¿½Äµï¿½
+function loadXMLDoc(dname) {
     try //Internet Explorer
     {
-        xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+        xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
     }
-    catch(e)
-    {
+    catch (e) {
         try //Firefox, Mozilla, Opera, etc.
         {
-            xmlDoc=document.implementation.createDocument("","",null);
+            xmlDoc = document.implementation.createDocument("", "", null);
         }
-        catch(e) {alert(e.message)}
+        catch (e) {
+            alert(e.message)
+        }
     }
-    try
-    {
-        xmlDoc.async=false;
+    try {
+        xmlDoc.async = false;
         xmlDoc.load(dname);
-        return(xmlDoc);
+        return (xmlDoc);
     }
-    catch(e) {alert(e.message)}
-    return(null);
+    catch (e) {
+        alert(e.message)
+    }
+    return (null);
 }
-//¶ÁÈ¡Ò»¸öÎÄ¼þ
+//ï¿½ï¿½È¡Ò»ï¿½ï¿½ï¿½Ä¼ï¿½
 function showXml(fileName, success) {
     $.ajax({
         type: "POST",
@@ -121,7 +122,7 @@ function showXml(fileName, success) {
         success: success
     });
 }
-//±£´æÒ»¸öÎÄ¼þ
+//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ä¼ï¿½
 function saveXml(fileName, success, content) {
     $.ajax({
         type: "POST",
@@ -138,37 +139,53 @@ function isIE() { //ie?
         return false;
 }
 
-//ieÏÂ½Úµã×ª×Ö·û´®
-function NodeToStr(node){
-    var sNodeAttrs="<"+node.nodeName+" ";
-    var oAttr=node.attributes;
-    sNodeAttrs+='feed_dog= \"'+oAttr[1].nodeValue+'\" name=\"'+oAttr[0].nodeValue+'\" ';
+//ieï¿½Â½Úµï¿½×ªï¿½Ö·ï¿½ï¿½ï¿½
+function NodeToStr(node) {
+    var sNodeAttrs = "<" + node.nodeName + " ";
+    var oAttr = node.attributes;
+    sNodeAttrs += 'feed_dog= \"' + oAttr[1].nodeValue + '\" name=\"' + oAttr[0].nodeValue + '\" ';
     /*for(var i=0;i<oAttr.length;i++){
      sNodeAttrs+=oAttr[i].nodeName+"=\'"+oAttr[i].nodeValue+"\' ";
      }*/
 
-    if(node.nodeValue==null){
-        sNodeAttrs+="/>"
-    }else{
-        sNodeAttrs+=">"+node.nodeValue+"</"+node.nodeName+">";
+    if (node.nodeValue == null) {
+        sNodeAttrs += "/>"
+    } else {
+        sNodeAttrs += ">" + node.nodeValue + "</" + node.nodeName + ">";
     }
     return sNodeAttrs;
 }
+function FrameJsonToXml(node) {
 
+    var tag = document.createElement(node.data.text);
+    var nodes = node.childNodes;
+    for (var i = 0; i < nodes.length; i++) {
+        if (!nodes[i].data.leaf) {
+            tag.appendChild(FrameJsonToXml(nodes[i]))
+        }else{
+            tag.innerHTML=nodes[i].data.text;
+        }
+    }
+    return tag;
+}
 function XmlToFrameJson(XmlDom) {
 
     var jsonobj = {};
     if (XmlDom.nodeType != 1) {
-console.log(XmlDom.nodeType);
+//console.log(XmlDom.nodeType);
     }
     var oNewChildNode = [];
     for (var i = 0; i < XmlDom.childNodes.length; i++) {
-        jsonobj['name'] = XmlDom.tagName;
+        jsonobj['text'] = XmlDom.tagName;
 
-        console.log( XmlDom.tagName)
-        if(XmlDom.childNodes.length==1){
-         jsonobj["value"] =XmlDom.innerHTML;
-         }
+        //console.log( XmlDom.tagName)
+        if (XmlDom.childNodes.length == 1) {
+            jsonobj["value"] = XmlDom.innerHTML;
+            jsonobj['children'] = {
+                text: XmlDom.innerHTML,
+                leaf: true
+            }
+        }
         if (XmlDom.childNodes[i].nodeType == 1) {
             var childNode = XmlDom.childNodes[i];
 
@@ -194,45 +211,46 @@ console.log(XmlDom.nodeType);
                     jsonobj["children"].push(XmlToFrameJson(oNewChildNode[j]));
                 }
             }
+
+
         }
         //console.log(XmlDom.childNodes[i])
-         /*if(XmlDom.childNodes[i].nodeType == 3){
-            console.log(XmlDom.childNodes[i].nodeName)
-                console.log(XmlDom.childNodes[i])
-        }*/
+        /*if(XmlDom.childNodes[i].nodeType == 3){
+         console.log(XmlDom.childNodes[i].nodeName)
+         console.log(XmlDom.childNodes[i])
+         }*/
     }
-    console.log(jsonobj)
+    //console.log(jsonobj)
     return jsonobj;
 }
-function deleteXmlNodeByIndex(XmlDom,Index){
-    var aDoms=XmlDom.querySelectorAll("*");
+function deleteXmlNodeByIndex(XmlDom, Index) {
+    var aDoms = XmlDom.querySelectorAll("*");
     console.log(aDoms);
     aDoms[Index].parentNode.removeChild(aDoms[Index]);
     return XmlDom;
 }
-function addXmlNodeByIndex(XmlDom,Index,oEle){
-    var aDoms=XmlDom.querySelectorAll("*");
+function addXmlNodeByIndex(XmlDom, Index, oEle) {
+    var aDoms = XmlDom.querySelectorAll("*");
     console.log(aDoms);
     aDoms[Index].appendChild(oEle);
     return XmlDom;
 };
 
 
-
 function formatXml(text) {
-    //È¥µô¶àÓàµÄ¿Õ¸ñ
+    //È¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Õ¸ï¿½
     text = '\n' + text.replace(/(<\w+)(\s.*?>)/g, function ($0, name, props) {
             return name + ' ' + props.replace(/\s+(\w+=)/g, " $1");
         }).replace(/>\s*?</g, ">\n<");
 
-    //°Ñ×¢ÊÍ±àÂë
+    //ï¿½ï¿½×¢ï¿½Í±ï¿½ï¿½ï¿½
     text = text.replace(/\n/g, '\r').replace(/<!--(.+?)-->/g, function ($0, text) {
         var ret = '<!--' + escape(text) + '-->';
         //alert(ret);
         return ret;
     }).replace(/\r/g, '\n');
 
-    //µ÷Õû¸ñÊ½
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½
     var rgx = /\n(<(([^\?]).+?)(?:\s|\s*?>|\s*?(\/)>)(?:.*?(?:(?:(\/)>)|(?:<(\/)\2>)))?)/mg;
     var nodeStack = [];
     var output = text.replace(rgx, function ($0, all, name, isBegin, isCloseFull1, isCloseFull2, isFull1, isFull2) {
@@ -263,7 +281,7 @@ function formatXml(text) {
     var outputText = output.substring(1);
     //alert(outputText);
 
-    //°Ñ×¢ÊÍ»¹Ô­²¢½âÂë£¬µ÷¸ñÊ½
+    //ï¿½ï¿½×¢ï¿½Í»ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½Ê½
     outputText = outputText.replace(/\n/g, '\r').replace(/(\s*)<!--(.+?)-->/g, function ($0, prefix, text) {
         //alert(['[',prefix,']=',prefix.length].join(''));
         if (prefix.charAt(0) == '\r')
@@ -285,6 +303,6 @@ function getPrefix(prefixIndex) {
 
     return output.join('');
 }
-String.prototype.replaceAll = function(s1,s2){
-    return this.replace(new RegExp(s1,"gm"),s2);
+String.prototype.replaceAll = function (s1, s2) {
+    return this.replace(new RegExp(s1, "gm"), s2);
 }
